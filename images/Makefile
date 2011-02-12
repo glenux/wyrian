@@ -1,9 +1,7 @@
 
-SPRITE_PCENT=15
-
 resize:
-	-mkdir $(SPRITE_PCENT)p
+	rm -f sprites && mkdir sprites
 	for i in fullsize/*; do \
-		convert -resize $(SPRITE_PCENT)% $$i $${i/fullsize/$(SPRITE_PCENT)p}; \
+		convert -resize 15% $$i $${i/fullsize/sprites}; \
 	done
 
