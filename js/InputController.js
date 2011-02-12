@@ -1,7 +1,8 @@
 var InputController = function() {
-
+	var that = {};
 	
-	this.observe = function() {
-		
+	that.observe = function() {
+		console.log("input");
 	};
+	return that;
 };

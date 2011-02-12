@@ -1,7 +1,8 @@
 var DisplayController = function() {
+	var that = {};
 
-
-	this.draw = function() {
-		
+	that.draw = function() {
+		console.log("draw");
 	};
+	return that;
 };
