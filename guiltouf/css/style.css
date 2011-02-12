@@ -18,19 +18,14 @@
 	z-index: 0;	
 }
 
-#ground {
-	z-index: 30;	
-}
-
-#game {
-	z-index: 60;	
-}
+#ground { z-index: 30; }
+#game { z-index: 60; }
 
 
 /* The Ship */
 #game #ship { 
 	position: absolute;
-	display: block;
+	display: none;
 	top:0;
 	left:0;
 	background: transparent;
@@ -67,6 +62,21 @@
 	background: transparent url(/images/sprites/weapon_pilot.png) no-repeat 0 0;
 }
 
+#ship .ship-foray {
+	position: absolute;
+	display: block;
+	top:30px;
+	left: 117px;
+	width: 19px;
+	height: 33px;
+	background: transparent url(/images/sprites/weapon_foray.png) no-repeat 0 0;
+}
+
+#ship .ship-foray.right {
+	background-position: right 0;
+	left: 24px;
+}
+
 #ship .ship-reactor {
 	position: absolute;
 	display: block;
@@ -88,17 +98,15 @@
 }
 
 /* Ennemies */
-#game .ennemy { border: 1px solid blue; }
+/*#game .ennemy { border: 1px solid blue; } */
+
+
+/* The HUD */
 #hud {
 	z-index: 90;	
 	display: none;
 }
 
-#ship {
-	top: 50%;
-	left: 50%;
-	background: white;
-}
 
 /* Debug Panel */
 #debug {

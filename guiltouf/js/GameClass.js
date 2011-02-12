@@ -1,5 +1,5 @@
 // Init Global vars
-var FPS = 30;
+var FPS = 40;
 var Stages = {} ;
 var Level = 1 ;
 var Layouts = {} ;
@@ -77,6 +77,9 @@ app.prototype.loopAnimation = function() {
 	// -- Build an active elements list
 	this.activeEls = [] ;
 	
+	// -- Detect collisions
+	
+	
 	// -- Search for elements that have to be updated
 	for ( var i in Layouts ) {
 		var _layout = Layouts[i] ;
@@ -91,10 +94,10 @@ app.prototype.loopAnimation = function() {
 		var _el = Layouts.Ennemies.els[i] ;
 		if ( ! _el.deleteAfter ) numEnnemies++ ;
 	}
-	$('#debug').html(numEnnemies) ;
 	for ( var i = numEnnemies-1 ; i < Level + 3 ; i++ ) {
 		Layouts.Ennemies.createRandom() ;
 	}
+	
 }
 
 // -- Bind Inputs

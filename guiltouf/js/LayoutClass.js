@@ -132,6 +132,8 @@ Layout.prototype.createObj = function(opts) {
 				    backgroundImage: settingsObj.imageSrc ? 'url('+settingsObj.imageSrc+')' : ''
 				}
 			}).appendTo(self.dom) ;
+		} else {
+			this.box.show(0) ;
 		}
 		
 		// -- Apply CSS

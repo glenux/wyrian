@@ -18,7 +18,6 @@ Layouts.Player = new Layout({
 			// -- KEY up /down
 			if ( Wyrian.input.keyboard.up ) {
 				if ( obj.y > 0 ) obj.y -= obj.parent.settings.speed ;
-
 			}
 			if ( Wyrian.input.keyboard.down && (obj.y < (Wyrian.height-obj.height) ) ) {
 				obj.y += obj.parent.settings.speed;
@@ -94,7 +93,7 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		bulletConf.height = 60 ;
 		bulletConf.speed = 20 ;
 		bulletConf.name = 'bullet' ;
-		bulletConf.origin.x = obj.x+20+obj.width/2 ;
+		bulletConf.origin.x = obj.x+18+obj.width/2 ;
 		bulletConf.origin.y = obj.y + 50 - bulletConf.height ;
 	}
 	
