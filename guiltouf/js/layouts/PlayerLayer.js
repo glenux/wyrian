@@ -5,6 +5,7 @@ Layouts.Player = new Layout({
 	// -- Define elements to draw with options
 	el: [{
 		id: 'ship',
+		name: 'ship',
 		width: 160,
 		height: 160,
 		sprites: [0,1],
@@ -73,16 +74,16 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		sprites: [0,1,2],
 		speed:  40,
 		direction: -1,
+		name: 'bullet',
 		origin: {x:0, y:0}
 	} ;
 	
 	// -- Default Left 
-	if ( bulletType == 'default' )  {
+	if ( bulletType == 'weapon_pilot' )  {
 		bulletConf.width = 16 ;
 		bulletConf.height = 64 ;
 		bulletConf.sprites = false ;
 		bulletConf.imageSrc = '/images/12px-long-blue.png' ;
-		bulletConf.name = 'bullet' ;
 		bulletConf.origin.x = obj.x-6+obj.width/2 ;
 		bulletConf.origin.y = obj.y - bulletConf.height ;
 	}
@@ -92,7 +93,6 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		bulletConf.width = 60 ;
 		bulletConf.height = 60 ;
 		bulletConf.speed = 20 ;
-		bulletConf.name = 'bullet' ;
 		bulletConf.origin.x = obj.x+18+obj.width/2 ;
 		bulletConf.origin.y = obj.y + 50 - bulletConf.height ;
 	}
@@ -102,7 +102,6 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		bulletConf.width = 60 ;
 		bulletConf.height = 60 ;
 		bulletConf.speed = 20 ;
-		bulletConf.name = 'bullet' ;
 		bulletConf.origin.x = obj.x-75+obj.width/2 ;
 		bulletConf.origin.y = obj.y + 50 - bulletConf.height ;
 	}
@@ -111,7 +110,7 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 	bulletConf.animate = function(obj) {
 	  	if ( obj.deleteAfter ) return false;
 	     obj.y += obj.settings.speed*obj.settings.direction ;
-	     if ( obj.y < -obj.height ) {
+	     if ( obj.y < -(obj.height+300) ) {
 	     	obj.deleteObj() ;
 	     }
 	} ;
@@ -136,7 +135,7 @@ Layouts.Player.fire = function(obj) {
 	
 	// Create new bullets
 	var bullets = [] ;
-	bullets.push(this.bulletLib(obj, 'default')) ;
+	bullets.push(this.bulletLib(obj, 'weapon_pilot')) ;
 	bullets.push(this.bulletLib(obj, 'big_left')) ;
 	bullets.push(this.bulletLib(obj, 'big_right')) ;
 	for ( var i in bullets ) {

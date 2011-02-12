@@ -162,7 +162,7 @@ Layout.prototype.createObj = function(opts) {
 	
 	// -- Draw object into scene
 	Obj.prototype.draw = function() {
-		if ( (this.y >= -this.height) && (this.y <= (Wyrian.height+this.height)) && this.x >= -this.width && this.x <= (Wyrian.width+this.width) ) {
+		if ( (this.y >= -2*this.height) && (this.y <= (Wyrian.height+this.height)) && this.x >= -this.width && this.x <= (Wyrian.width+this.width) ) {
 		
 			// -- Set sprite to display
 			if ( this.settings.sprites ) {
