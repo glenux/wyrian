@@ -1,0 +1,48 @@
+.container {
+
+}
+
+.container .layout {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	overflow: hidden;
+}
+
+#background {
+	background: transparent url(/images/debug-bg.jpg) repeat 0 0;
+	z-index: 0;	
+}
+
+#ground {
+	z-index: 30;	
+}
+
+#game {
+	z-index: 60;	
+}
+
+
+#game .ship { border: 1px solid red; }
+#game .ennemy { border: 1px solid blue; }
+#hud {
+	z-index: 90;	
+}
+
+#ship {
+	top: 50%;
+	left: 50%;
+	background: white;
+}
+
+/* Debug Panel */
+#debug {
+	position: absolute;
+	display: block;
+	right: 10px;
+	top: 10px;
+	color:#fff;
+	z-index: 1000;
+}
