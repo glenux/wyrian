@@ -3,10 +3,7 @@
 ***************************************************************************/
 Wyrian = new app({
 	'libs': [
-		'order!jquery.transform-0.9.3.min',
-		'order!DisplayController',
-		'order!InputController',
-		'order!GameController'
+		'order!jquery.transform-0.9.3.min'
 	],
 	'layers': [
 		'order!LayoutClass',
