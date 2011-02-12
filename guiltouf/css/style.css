@@ -33,7 +33,7 @@
 	display: block;
 	top:0;
 	left:0;
-	background: rgba(20, 20, 20, 1);
+	background: transparent;
 }
 
 #ship .wing { 
@@ -46,11 +46,7 @@
 	background: transparent url(/images/sprites/wings_eagle_sprite.png) no-repeat 0 0;
 }
 
-#ship .wing.right {
-	left: 83px;
-	background-position: right 0;
-}
-
+#ship .wing.right { left: 83px; background-position: right 0; }
 #ship .ship-body {
 	position: absolute;
 	display: block;
@@ -65,10 +61,30 @@
 	position: absolute;
 	display: block;
 	top:0;
-	left: 70.5px;
+	left: 71px;
 	width: 18px;
 	height: 40px;
 	background: transparent url(/images/sprites/weapon_pilot.png) no-repeat 0 0;
+}
+
+#ship .ship-reactor {
+	position: absolute;
+	display: block;
+	background: transparent url(/images/sprites/reactor_drum.png) no-repeat 0 0;
+	top:85px;
+	left:72px;
+	width: 15px;
+	height: 14px;
+}
+
+#ship .ship_reactor_fire {
+	position: absolute;
+	display: block;
+	background: transparent url(/images/sprites/reactor_fire_sprite.png) no-repeat -88px 0;
+	top:88px;
+	left: 58px;
+	width: 44px;
+	height: 68px;
 }
 
 /* Ennemies */

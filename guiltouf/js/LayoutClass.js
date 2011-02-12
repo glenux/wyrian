@@ -97,6 +97,7 @@ Layout.prototype.createObj = function(opts) {
 		$.extend(true, settingsObj, optsObj) ;
 		
 		// -- Store options
+		this.parent = self ;
 		this.name = settingsObj.name || 'default' ;
 		this.id = settingsObj.id || 'element_'+Wyrian.uniqId++ ;
 		this.width = settingsObj.width ? settingsObj.width : self.width  ;
@@ -130,18 +131,20 @@ Layout.prototype.createObj = function(opts) {
 				    backgroundPosition: settingsObj.backgroundPosition,
 				    backgroundImage: settingsObj.imageSrc ? 'url('+settingsObj.imageSrc+')' : ''
 				}
-			})
+			}).appendTo(self.dom) ;
 		}
 		
 		// -- Apply CSS
 		this.box.css({
 		    width: this.width,
 		    height: this.height
-		}).transform({'translate': this.x+'px, '+this.y+'px'}) ;
+		}) ;
 		
-		// -- Append to scene
-		this.box.appendTo(self.dom) ;
-
+		// -- Move
+		if ( ! this.settings.nomove ) {
+			this.box.transform({'translate': this.x+'px, '+this.y+'px'}) ;
+		}
+		
 	} ;
 	
 	// -- Init 
@@ -149,6 +152,11 @@ Layout.prototype.createObj = function(opts) {
 		this.x = this.settings.origin.x ;
 		this.y = this.settings.origin.y ;
 	} ;	
+	
+	// -- Return instance
+	Obj.prototype.getInstance = function() {
+		return this;
+	} ;
 	
 	// -- Draw object into scene
 	Obj.prototype.draw = function() {
@@ -158,16 +166,21 @@ Layout.prototype.createObj = function(opts) {
 			if ( this.settings.sprites ) {
 				this.lastSprite = this.lastSprite || 0 ;
 				this.lastSprite++ ;
-				if ( this.lastSprite >= this.settings.sprites.length ) 
-					this.lastSprite = 0 ;
-				this.box.css({'backgroundPosition': -1*this.lastSprite*this.settings.width+'px 0'}) ;
+				if ( typeof this.settings.sprites[this.lastSprite] == 'undefined' ) this.lastSprite = 0 ;
+				this.box.css({'backgroundPosition': -1*this.settings.sprites[this.lastSprite]*this.settings.width+'px 0'}) ;
+				
+				
+				//if ( this.id == 'ship' ) 
+			//		console.log(this.settings.sprites,  -1*this.settings.sprites[this.lastSprite]*this.settings.width+'px 0') ;
 			}
 			
 			// -- Move div
-			if ( this.settings.moveParent ) {
-				this.box.parent().transform({'translate': this.x+'px, '+this.y+'px'}) ;
-			} else {
-				this.box.transform({'translate': this.x+'px, '+this.y+'px'}) ;
+			if ( ! this.settings.nomove ) {
+				if ( this.settings.moveParent ) {
+					this.box.parent().css({'translate': this.x+'px, '+this.y+'px'}) ;
+				} else {
+					this.box.css({'translate': this.x+'px, '+this.y+'px'}) ;
+				}
 			}
 		}
 		
@@ -178,10 +191,8 @@ Layout.prototype.createObj = function(opts) {
 		if ( $.isFunction(this.settings.animate) ) {
 			this.parent = self ;
 			this.settings.animate(this) ;
-			this.draw(this) ;
-		} else {
-			this.draw() ;
-  		}
+		} 
+		if ( ! this.nodraw ) this.draw() ;
 	}
 	
 	// -- Remove object

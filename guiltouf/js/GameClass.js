@@ -5,7 +5,6 @@ var Level = 1 ;
 var Layouts = {} ;
 var timers = {} ;
 var Game = null ;
-var cos = Math.cos, sin = Math.sin, tan = Math.tan, exp = Math.exp, log = Math.log, pow = Math.pow ;
 
 // -- Init scene prototype
 var app = function(opts) {

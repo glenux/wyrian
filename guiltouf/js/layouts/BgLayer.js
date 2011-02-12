@@ -8,12 +8,14 @@ Layouts.Background = new Layout({
 		animate: function(obj) { 
 			obj.y -= obj.parent.settings.speed*obj.parent.settings.direction;
 			obj.parent.settings.dom.css({backgroundPosition: '0 '+obj.y+'px'}) ;
+			obj.nodraw = true ;
 		}
 	}],
 	
 	// -- Define current Speed
 	speed: 5,
 	direction: -1,
+	nomove: true,
 	
 	// -- Define canvas parent
 	dom: $('div#background')

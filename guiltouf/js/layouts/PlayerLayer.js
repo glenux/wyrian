@@ -6,18 +6,19 @@ Layouts.Player = new Layout({
 	el: [{
 		id: 'ship',
 		width: 160,
-		height: 137,
+		height: 160,
+		sprites: [0,1],
 		origin: {
 			x: Wyrian.width/2 - 80,
 			y: Wyrian.height-220
 		},
 		fireInterval: 300,
-		//moveParent: true,
 		animate: function(obj) { 
 		
 			// -- KEY up /down
-			if ( Wyrian.input.keyboard.up && obj.y > 0 ) {
-				obj.y -= obj.parent.settings.speed ;
+			if ( Wyrian.input.keyboard.up ) {
+				if ( obj.y > 0 ) obj.y -= obj.parent.settings.speed ;
+
 			}
 			if ( Wyrian.input.keyboard.down && (obj.y < (Wyrian.height-obj.height) ) ) {
 				obj.y += obj.parent.settings.speed;
@@ -25,16 +26,11 @@ Layouts.Player = new Layout({
 			
 			// -- Left/Right move : choose sprite sequence to display
 			if ( Wyrian.input.keyboard.left && (obj.x > 0)) {
-				obj.spriteIndex = 0 ;
 				obj.x -= obj.parent.settings.speed;
 			} 
-			else if ( Wyrian.input.keyboard.right && (obj.x < Wyrian.width-obj.width) ) {
-				obj.spriteIndex = 2 ;
+			if ( Wyrian.input.keyboard.right && (obj.x < Wyrian.width-obj.width) ) {
 				obj.x += obj.parent.settings.speed;
 			} 
-			else {
-				obj.spriteIndex = 1 ;
-			}
 			
 			// -- Press Space : fire
 			if ( Wyrian.input.keyboard.space ) {
@@ -42,6 +38,22 @@ Layouts.Player = new Layout({
 			}
 
 		}
+	}, {
+		
+		id: 'ship_reactor',
+		width: 44,
+		height: 68,
+		backgroundColor:'red',
+		imageSrc: '/images/sprites/reactor_fire_sprite.png',
+		sprites: [0,1],
+		nomove: true,
+		animate: function(obj) {
+			obj.settings.sprites = [0,1] ;
+			if ( Wyrian.input.keyboard.up ) {
+				obj.getInstance().settings.sprites = [2,3,4] ;
+			}
+		}
+		
 	}],
 	
 	// -- Define current Speed
@@ -66,24 +78,13 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 	} ;
 	
 	// -- Default Left 
-	if ( bulletType == 'default_left' )  {
+	if ( bulletType == 'default' )  {
 		bulletConf.width = 16 ;
 		bulletConf.height = 64 ;
 		bulletConf.sprites = false ;
 		bulletConf.imageSrc = '/images/12px-long-blue.png' ;
 		bulletConf.name = 'bullet' ;
-		bulletConf.origin.x = obj.x+8+obj.width/2 ;
-		bulletConf.origin.y = obj.y - bulletConf.height ;
-	}
-	
-	// -- Default Right
-	if ( bulletType == 'default_right' )  {
-		bulletConf.width = 16 ;
-		bulletConf.height = 64 ;
-		bulletConf.sprites = false ;
-		bulletConf.imageSrc = '/images/12px-long-blue.png' ;
-		bulletConf.name = 'bullet' ;
-		bulletConf.origin.x = obj.x-8+obj.width/2 ;
+		bulletConf.origin.x = obj.x-6+obj.width/2 ;
 		bulletConf.origin.y = obj.y - bulletConf.height ;
 	}
 	
@@ -93,8 +94,8 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		bulletConf.height = 60 ;
 		bulletConf.speed = 20 ;
 		bulletConf.name = 'bullet' ;
-		bulletConf.origin.x = obj.x+30+obj.width/2 ;
-		bulletConf.origin.y = obj.y + 30 - bulletConf.height ;
+		bulletConf.origin.x = obj.x+20+obj.width/2 ;
+		bulletConf.origin.y = obj.y + 50 - bulletConf.height ;
 	}
 	
 	// -- Big Left
@@ -103,8 +104,8 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		bulletConf.height = 60 ;
 		bulletConf.speed = 20 ;
 		bulletConf.name = 'bullet' ;
-		bulletConf.origin.x = obj.x-60+obj.width/2 ;
-		bulletConf.origin.y = obj.y + 30 - bulletConf.height ;
+		bulletConf.origin.x = obj.x-75+obj.width/2 ;
+		bulletConf.origin.y = obj.y + 50 - bulletConf.height ;
 	}
 	
 	// -- The animate function
@@ -136,8 +137,7 @@ Layouts.Player.fire = function(obj) {
 	
 	// Create new bullets
 	var bullets = [] ;
-	bullets.push(this.bulletLib(obj, 'default_left')) ;
-	bullets.push(this.bulletLib(obj, 'default_right')) ;
+	bullets.push(this.bulletLib(obj, 'default')) ;
 	bullets.push(this.bulletLib(obj, 'big_left')) ;
 	bullets.push(this.bulletLib(obj, 'big_right')) ;
 	for ( var i in bullets ) {
