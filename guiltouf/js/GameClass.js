@@ -22,6 +22,10 @@ var app = function(opts) {
 	$.extend(true, settings, opts);
 	this.settings = settings ;
 	
+	// Set Scene size
+	this.width = $(document).width() ;
+	this.height = $(document).height() ;
+	
 	// If canvas supported in native or use extended support for croos browsing like excnvas for ie
 	this.support = this.support || {} ;
 	if ( typeof G_vmlCanvasManager != 'undefined' ) {
@@ -89,7 +93,7 @@ app.prototype.loopAnimation = function() {
 		if ( ! _el.deleteAfter ) numEnnemies++ ;
 	}
 	$('#debug').html(numEnnemies) ;
-	for ( var i = numEnnemies-1 ; i < Level + 2 ; i++ ) {
+	for ( var i = numEnnemies-1 ; i < Level + 3 ; i++ ) {
 		Layouts.Ennemies.createRandom() ;
 	}
 }

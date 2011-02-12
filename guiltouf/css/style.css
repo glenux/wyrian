@@ -1,11 +1,13 @@
 .container {
-
+	width: 100%;
+	height: 100%;
 }
 
 .container .layout {
 	width: 100%;
 	height: 100%;
 	position: absolute;
+	display: block;
 	top: 0;
 	right: 0;
 	overflow: hidden;
@@ -25,10 +27,55 @@
 }
 
 
-#game .ship { border: 1px solid red; }
+/* The Ship */
+#game #ship { 
+	position: absolute;
+	display: block;
+	top:0;
+	left:0;
+	background: rgba(20, 20, 20, 1);
+}
+
+#ship .wing { 
+	position: absolute;
+	top:33px;
+	left:6px;
+	display: block;
+	width: 70px;
+	height: 55px;
+	background: transparent url(/images/sprites/wings_eagle_sprite.png) no-repeat 0 0;
+}
+
+#ship .wing.right {
+	left: 83px;
+	background-position: right 0;
+}
+
+#ship .ship-body {
+	position: absolute;
+	display: block;
+	top: 20px;
+	left: 0;
+	width: 154px;
+	height: 137px;
+	background: transparent url(/images/sprites/spaceship_body.png) no-repeat 0 0;
+}
+
+#ship .ship-canon {
+	position: absolute;
+	display: block;
+	top:0;
+	left: 70.5px;
+	width: 18px;
+	height: 40px;
+	background: transparent url(/images/sprites/weapon_pilot.png) no-repeat 0 0;
+}
+
+/* Ennemies */
 #game .ennemy { border: 1px solid blue; }
 #hud {
 	z-index: 90;	
+	display: none;
 }
 
 #ship {

@@ -23,7 +23,7 @@ Layouts.Ennemies.createRandom = function(opts) {
 		power: 40,
 		imageSrc: '/images/bullet-electric-sprite.png',
 		sprites: [0,1,2],
-		speed:  Math.round(Math.max(10, Math.random()*30)),
+		speed:  Math.round(Math.max(10, Math.random()*20)),
 		direction: 1,
 		origin: {x:Math.round(Math.random()*this.width), y:0},
 		animate: function (obj) {

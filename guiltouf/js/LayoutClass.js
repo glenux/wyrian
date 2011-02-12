@@ -98,7 +98,7 @@ Layout.prototype.createObj = function(opts) {
 		
 		// -- Store options
 		this.name = settingsObj.name || 'default' ;
-		this.id = settingsObj.id || Wyrian.uniqId++ ;
+		this.id = settingsObj.id || 'element_'+Wyrian.uniqId++ ;
 		this.width = settingsObj.width ? settingsObj.width : self.width  ;
 		this.height = settingsObj.height ? settingsObj.height : self.height  ;
 		this.settings = settingsObj ;
@@ -115,21 +115,28 @@ Layout.prototype.createObj = function(opts) {
 		this.init() ;
 		
 		// -- Create a DOM object
-		this.box = $('<div>', {
-			class:'sprite '+this.name,
-			id: 'element_'+this.id,
-			css: {
-				position: 'absolute', 
-				display: 'block', 
-				top: 0,
-				left: 0,
-				width: this.width,
-				height: this.height,
-				backgroundColor: settingsObj.backgroundColor, 
-				backgroundRepeat: settingsObj.backgroundRepeat,
-				backgroundPosition: settingsObj.backgroundPosition,
-				backgroundImage: settingsObj.imageSrc ? 'url('+settingsObj.imageSrc+')' : ''
-			}	
+		this.box = $('#'+this.id) ;
+		if ( ! this.box.length ) {
+			this.box = $('<div>', {
+				class:'sprite '+this.name,
+				id: this.id,
+				css:{
+					position: 'absolute', 
+				    display: 'block', 
+				    top: 0,
+				    left: 0,
+				    backgroundColor: settingsObj.backgroundColor, 
+				    backgroundRepeat: settingsObj.backgroundRepeat,
+				    backgroundPosition: settingsObj.backgroundPosition,
+				    backgroundImage: settingsObj.imageSrc ? 'url('+settingsObj.imageSrc+')' : ''
+				}
+			})
+		}
+		
+		// -- Apply CSS
+		this.box.css({
+		    width: this.width,
+		    height: this.height
 		}).transform({'translate': this.x+'px, '+this.y+'px'}) ;
 		
 		// -- Append to scene
@@ -145,7 +152,7 @@ Layout.prototype.createObj = function(opts) {
 	
 	// -- Draw object into scene
 	Obj.prototype.draw = function() {
-		if ( (this.y >= -this.height) && (this.y <= (self.height+this.height)) && this.x >= -this.width && this.x <= (self.width+this.width) ) {
+		if ( (this.y >= -this.height) && (this.y <= (Wyrian.height+this.height)) && this.x >= -this.width && this.x <= (Wyrian.width+this.width) ) {
 		
 			// -- Set sprite to display
 			if ( this.settings.sprites ) {
@@ -157,7 +164,11 @@ Layout.prototype.createObj = function(opts) {
 			}
 			
 			// -- Move div
-			this.box.transform({'translate': this.x+'px, '+this.y+'px'}) ;
+			if ( this.settings.moveParent ) {
+				this.box.parent().transform({'translate': this.x+'px, '+this.y+'px'}) ;
+			} else {
+				this.box.transform({'translate': this.x+'px, '+this.y+'px'}) ;
+			}
 		}
 		
 	} ;

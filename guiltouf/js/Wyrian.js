@@ -3,14 +3,15 @@
 ***************************************************************************/
 Wyrian = new app({
 	'libs': [
-		'order!jquery.transform-0.9.3.min'
+		'order!jquery.transform-0.9.3.min',
+		'order!LayoutClass'
 	],
 	'layers': [
-		'order!LayoutClass',
 		'order!layouts/BgLayer',
 		'order!layouts/PlayerLayer',
 		'order!layouts/Ennemies'
-	]
+	],
+	'wrapper': $('#GameContainer') 
 }) ;
 
 	    	    

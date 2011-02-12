@@ -4,17 +4,22 @@ Layouts.Player = new Layout({
 
 	// -- Define elements to draw with options
 	el: [{
-		name: 'ship',
-		width: 200,
-		height: 80,
+		id: 'ship',
+		width: 160,
+		height: 137,
+		origin: {
+			x: Wyrian.width/2 - 80,
+			y: Wyrian.height-220
+		},
 		fireInterval: 300,
+		//moveParent: true,
 		animate: function(obj) { 
-			
+		
 			// -- KEY up /down
 			if ( Wyrian.input.keyboard.up && obj.y > 0 ) {
 				obj.y -= obj.parent.settings.speed ;
 			}
-			if ( Wyrian.input.keyboard.down && (obj.y < (obj.parent.height-obj.height) ) ) {
+			if ( Wyrian.input.keyboard.down && (obj.y < (Wyrian.height-obj.height) ) ) {
 				obj.y += obj.parent.settings.speed;
 			}
 			
@@ -23,7 +28,7 @@ Layouts.Player = new Layout({
 				obj.spriteIndex = 0 ;
 				obj.x -= obj.parent.settings.speed;
 			} 
-			else if ( Wyrian.input.keyboard.right && (obj.x < obj.parent.width-obj.width) ) {
+			else if ( Wyrian.input.keyboard.right && (obj.x < Wyrian.width-obj.width) ) {
 				obj.spriteIndex = 2 ;
 				obj.x += obj.parent.settings.speed;
 			} 
