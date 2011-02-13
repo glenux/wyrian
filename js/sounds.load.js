@@ -5,7 +5,7 @@
 	soundManager.useFlashBlock = false;
 	soundManager.bgColor = '#ffffff';
 	soundManager.debugMode = false;
-	soundManager.url = 'http://patator.socialmixmedia.fr/assets/js/soundmanager/swf/';
+	soundManager.url = 'js/libs/soundmanager/swf/';
 	soundManager.wmode = 'transparent'; // hide initial flash of white on everything except firefox/win32	
 	soundManager.allowScriptAccess = 'always'; 
 	soundManager.useFastPolling = true; 
@@ -40,7 +40,7 @@
 		soundManager.createSound({
 		  id: 'click',
 		  url: 'audio/click.ogg',
-		  autoLoad: true,
+		  autoLoad: false,
 		  autoPlay: false,
 		  multiShot: false,
 		  volume: 50
@@ -50,7 +50,7 @@
 		soundManager.createSound({
 		  id: 'shoot',
 		  url: 'audio/big_laser.ogg',
-		  autoLoad: true,
+		  autoLoad: false,
 		  autoPlay: false,
 		  multiShot: true,
 		  volume: 30
@@ -60,11 +60,22 @@
 		soundManager.createSound({
 		  id: 'explode',
 		  url: 'audio/explode.ogg',
-		  autoLoad: true,
+		  autoLoad: false,
 		  autoPlay: false,
 		  multiShot: true,
 		  volume: 10
 		});
+		
+		// -- Game Over
+		soundManager.createSound({
+		  id: 'gameOver',
+		  url: 'audio/game-over.ogg',
+		  autoLoad: false,
+		  autoPlay: false,
+		  multiShot: true,
+		  volume: 10
+		});
+		
 		
 	});
 	

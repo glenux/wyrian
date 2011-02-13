@@ -97,6 +97,9 @@ jQuery(document).ready(function() {
 		$('#game-over:hidden').fadeIn(500) ;
 		$('#ground, #ship').fadeTo(500, 0.2) ;
 		
+		// -- Play Sound
+		soundManager.play('gameOver') ;
+		
 		// -- Stop loopAnimation
 		if ( timers.loopGame ) clearInterval(timers.loopGame) ;
 		
