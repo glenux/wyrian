@@ -1,4 +1,4 @@
-/* BASICS */
+/* GOOGLE FONT */
 .orbitron {
 	font-family: 'Orbitron', serif;
 	font-style: normal;
@@ -10,7 +10,8 @@
 	word-spacing: 0em;
 	line-height: 1.2;
 }
-  
+
+/* Global Container */
 .container {
 	width: 100%;
 	height: 100%;
@@ -110,14 +111,8 @@
 	height: 68px;
 }
 
-/* Ennemies */
-/*#game .ennemy { border: 1px solid blue; } */
-
-
 /* The HUD */
-#hud {
-	z-index: 90;	
-}
+#hud { z-index: 90; display: none;	}
 
 #hud #score {
 	font-size:36px;
@@ -138,7 +133,7 @@
 	font-weight: bold;
 	text-shadow: 0 0 5px rgba(115, 171, 255, 0.4) ;
 	position: absolute;
-	display: block;
+	display: none;
 	top:100px;
 	right: 30px;
 }
@@ -155,13 +150,53 @@
 	right: 30px;
 }
 
-/* Debug Panel */
+/* GameIntro Panel */
+#game-intro {
+	position: absolute;
+	display: block;
+	left: 0px;
+	top: 50%;
+	margin-top: -150px;
+	color:#fff;
+	z-index: 1000;
+	width:100%;
+	text-align: center;
+}
+
+#game-intro .text {
+	position: relative;
+	display: block;
+	font-size: 64px;
+}
+
+#game-intro #start-game {
+	position: relative;
+	display: block;
+	margin: 20px auto;
+	width: 300px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 5px solid rgba(0,0,0, 0.3);
+	padding: 15px 0 10px;
+	font-size: 24px;
+	background: rgba(0,0,0, 0.1);
+}
+
+#game-intro #start-game.hover {
+	cursor: pointer;
+	background: rgba(0,0,0, 0.2);
+	box-shadow: 0 0 20px rgba(27, 161, 255, 0.5) ;
+	-moz-box-shadow: 0 0 20px rgba(27, 161, 255, 0.5) ;
+}
+
+/* GameOver Panel */
 #game-over {
 	position: absolute;
 	display: none;
 	left: 0px;
 	top: 50%;
-	margin-top: -100px;
+	margin-top: -150px;
 	color:#fff;
 	z-index: 1000;
 	width:100%;
@@ -191,8 +226,33 @@
 #game-over #restart-game.hover {
 	cursor: pointer;
 	background: rgba(0,0,0, 0.2);
-	box-shadow: 0 0 10px rgba(27, 161, 255, 0.5) ;
+	box-shadow: 0 0 20px rgba(27, 161, 255, 0.5) ;
+	-moz-box-shadow: 0 0 20px rgba(27, 161, 255, 0.5) ;
 }
+
+#game-over #share-buttons {
+	position: relative;
+	display: block;	
+	text-align: center;
+	padding: 10px 0;
+}
+
+#game-over #share-buttons div {
+	display: inline-block;
+    margin: 0 10px;
+    position: relative;
+}
+
+#game-over #share-buttons a {
+	position: relative;
+	display: block;
+	opacity: 0.1;
+	outline: none; 
+}
+
+#game-over #share-buttons a img { border:none; outline: none; }
+#game-over #share-buttons a:hover { opacity: 0.9; cursor: pointer; }
+
 
 /* Credits */
 #credits {
@@ -207,11 +267,7 @@
 	font-family: "Lucida Grande", Verdana;
 }
 
-#credits a {
-	text-decoration: none;
-	color: #1ba1ff;
-}
-
-#credits a:hover {
-	text-decoration: underline;
-}
+#credits a { text-decoration: none; color: #1ba1ff; }
+#credits a:hover { text-decoration: underline; }
+#credits a.author { color: #baff58; }
+#credits a.quote { color: #fa8100; }

@@ -3,31 +3,49 @@
       xmlns:og="http://opengraphprotocol.org/schema/"
       xmlns:fb="http://www.facebook.com/2008/fbml">
 <head> 
+	
+	<!-- Google Chrome Frame Compatibility -->
+	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	
+	<!-- SEO Friendly -->
+	<title>Wyrian - A clone Game of Tyrian in HTML5</title>
+	<meta name="description" content="Wyrian : An awesome clone Game of Tyrian. Developed during the HTML5 Game Jam 2011 at Paris by Guillaume DE LA RUE." /> 
+	
+	<!-- Facebook Meta Tags -->
+	<meta property="og:type" content="game" />
+	<meta property="og:title" content="Wyrian - An awesome clone Game of Tyrian in HTML5" />
+	<meta property="og:site_name" content="Wyrian" />
+	<meta property="og:url" content="http://www.html5place.com/lab/wyrian/" /> 
+	<meta property="og:description" content="Wyrian : An awesome clone Game of Tyrian. Developed during the HTML5 Game Jam 2011 at Paris."/>
 
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-
-<!-- Facebook Meta Tags -->
-<title>Wyrian - A clone Game of Tyrian in HTML5</title>
-<meta property="og:type" content="game" />
-<meta property="og:title" content="Wyrian - A clone Game of Tyrian in HTML5" />
-<meta property="og:site_name" content="Wyrian" />
-<meta property='og:url' content='http://www.html5place.com/lab/wyrian/' /> 
-<meta property="fb:admins" content="100001668966106,582526084,100001643794747"/>
-<meta property="og:description" content="An alpha version clone of the Tyrian Game. Developed during the HTML5 Game Jam 2011 at Paris."/>
-
+	<!-- Stylesheets -->
 	<link rel="stylesheet" media="all" href="css/style.css" />
 	<link  href="http://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet" type="text/css" >
 </head>
 <body>
+
+	<!-- Game Intro -->
+	<div id="game-intro">
+		<div class="text orbitron">Wyrian</div>
+		<div id="start-game" class="orbitron">Play</div>
+	</div>
+	
+	<!-- Game Over -->
 	<div id="game-over">
 		<div class="text orbitron">GAME OVER</div>
 		<div id="restart-game" class="orbitron">Restart</div>
+		<div id="share-buttons">
+			<div class="twitter">
+				<a href="http://twitter.com/?status=RT%20%40html5place%20%3A%20Wyrian%20-%20An%20awesome%20clone%20Game%20of%20Tyrian%20in%20%23html5%20http%3A%2F%2Fbit.ly%2FgpObfX%20%23pgj2011%20%23game" target="_blank" title="Share on Twitter"><img src="images/twitter_button.png" width="122" height="42"></a>
+			</div>
+			<div class="facebook">
+				<a href="http://www.facebook.com/sharer.php?u=http://www.html5place.com/lab/wyrian/" target="_blank" title="Share on Facebook"><img src="images/facebook_button.png" width="122" height="42"></a>
+			</div>
+		</div>
 	</div>
-	<div id="credits" class="">
-		<strong>HTML5 Game Jam 2011</strong><br>
-		<strong><a href="https://github.com/glenux/wyrian" target="_blank" title="View Project on GitHub">Wyrian</a> v0.2a</strong> | <a href="http://www.html5place.com/" title="View my Website">Guillaume DE LA RUE</a><br>Thanks to <a href="https://github.com/glenux" target="_blank" title="View profile of Glenux on GitHub">Glenux</a> for design and Matthieu Bosquet and all people presents :)
-	</div>
+	
+	<!-- Scene -->
 	<div class="container" id="GameContainer">
 		<div id="background" class="layout"></div>
 		<div id="ground" class="layout"></div>
@@ -50,10 +68,30 @@
 		</div>
 	</div>
 	
+	<!-- The footer... -->
+	<footer id="credits" class="">
+		<strong>HTML5 Game Jam 2011</strong><br>
+		<strong><a href="https://github.com/glenux/wyrian" target="_blank" title="View Project on GitHub" class="game">..:: Wyrian v<span id="version">0.2a</span> ::..</a></strong> | <a href="http://www.html5place.com/" title="View my Website" class="author">Guillaume DE LA RUE</a><br>Thanks to <a href="https://github.com/glenux" target="_blank" title="View profile of Glenux on GitHub" class="quote">Glenux</a> for design and Matthieu Bosquet<br>And everyone present at the HTML5 Game Jam :)
+	</footer>
 	
-	<script type="text/javascript" src="js/jquery-1.5.js"></script>
-	<script type="text/javascript" src="js/require.js"></script>
+	<!-- Main JS Libs -->
+	<script type="text/javascript" src="js/libs/jquery-1.5.js"></script>
+	<script type="text/javascript" src="js/libs/require.js"></script>
 	<script type="text/javascript" src="js/GameClass.js"></script>
-	<script type="text/javascript" src="js/Wyrian.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	<!-- ANalytics Tracking -->
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-12891268-4']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+
 </body>
 </html>

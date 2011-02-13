@@ -34,34 +34,6 @@ var Layout = function(opts) {
 	return this;
 }; 
 
-// -- Return or set settings
-Layout.prototype.option = function(optName, optValue) {
-	
-	// No params => return all settings
-	if ( typeof optName == 'undefined' ) return this.settings;
-	
-	// If optName and optValue set => modify it
-	else if ( typeof optValue != 'undefined' ) this.settings[optName] = this.settings ;
-	
-	// In other cases, simply return the setting value
-	else return this.settings[optName] ;
-
-}; 
-
-// -- Return an object by name
-Layout.prototype.getObj = function(name) {
-	this.cache = this.cache || {} ;
-	
-	if ( this.cache[name] ) return this.cache[name] ;
-	
-	for ( var i in this.els ) {
-		if ( this.els[i].settings.name == name ) {
-			this.cache[name] = this.els[i] ;
-			return this.cache[name] ;
-		}
-	}
-}
-
 // -- Update elements into layout
 Layout.prototype.update = function() {
 	for ( var j in this.els ) {
@@ -100,7 +72,7 @@ Layout.prototype.createObj = function(opts) {
 		// -- Store options
 		this.parent = self ;
 		this.name = settingsObj.name || 'default' ;
-		this.id = settingsObj.id || 'element_'+Wyrian.uniqId++ ;
+		this.id = settingsObj.id || 'element_'+Game.uniqId++ ;
 		this.width = settingsObj.width ? settingsObj.width : self.width  ;
 		this.height = settingsObj.height ? settingsObj.height : self.height  ;
 		this.settings = settingsObj ;
@@ -118,36 +90,42 @@ Layout.prototype.createObj = function(opts) {
 		
 		// -- Create a DOM object
 		this.box = $('#'+this.id) ;
+		this.dynamic = false ;
+		this.cssObj = {} ;
 		if ( ! this.box.length ) {
+		
 			this.box = $('<div>', {
 				class:'sprite '+this.name,
-				id: this.id,
-				css:{
-					position: 'absolute', 
-				    display: 'block', 
-				    top: 0,
-				    left: 0,
-				    backgroundColor: settingsObj.backgroundColor, 
-				    backgroundRepeat: settingsObj.backgroundRepeat,
-				    backgroundPosition: settingsObj.backgroundPosition,
-				    backgroundImage: settingsObj.imageSrc ? 'url('+settingsObj.imageSrc+')' : ''
-				}
-			}).appendTo(self.dom) ;
-		} else {
-			this.box.show(0) ;
+				id: this.id
+			}) ;
+			
+			this.cssObj = {
+				position: 'absolute', 
+	    	    top: 0,
+	    	    left: 0,
+	    	    display: 'block',
+	    	    backgroundColor: settingsObj.backgroundColor, 
+	    	    backgroundRepeat: settingsObj.backgroundRepeat,
+	    	    backgroundPosition: settingsObj.backgroundPosition,
+	    	    backgroundImage: settingsObj.imageSrc ? 'url('+settingsObj.imageSrc+')' : ''
+	    	} ;
+	    	
+			this.dynamic = true ;
 		}
 		
 		// -- Apply CSS
-		this.box.css({
-		    width: this.width,
-		    height: this.height
-		}) ;
+		this.cssObj.width = this.width ;
+		this.cssObj.height = this.height ;
 		
 		// -- Move
 		if ( ! this.settings.nomove ) {
-			this.box.transform({'translate': this.x+'px, '+this.y+'px'}) ;
+			this.cssObj.translate = this.x+'px, '+this.y+'px' ;
 		}
 		
+		// -- Apply CSS Append and display
+		this.box.css(this.cssObj) ;
+		if ( this.dynamic ) this.box.appendTo(self.dom) ;
+
 	} ;
 	
 	// -- Init 
@@ -163,14 +141,14 @@ Layout.prototype.createObj = function(opts) {
 	
 	// -- Draw object into scene
 	Obj.prototype.draw = function() {
-		if ( (this.y >= -2*this.height) && (this.y <= (Wyrian.height+this.height)) && this.x >= -this.width && this.x <= (Wyrian.width+this.width) ) {
+		if ( (this.y >= -2*this.height) && (this.y <= (Game.height+this.height)) && this.x >= -this.width && this.x <= (Game.width+this.width) ) {
 			
-			Wyrian.activeElements++ ;
+			Game.activeElements++ ;
 			
 			// -- Set sprite to display
 			if ( this.settings.sprites ) {
 				this.lastSprite = this.lastSprite || 0 ;
-				if ( (Wyrian.loops%(this.settings.spriteMod||1)) == 0 ) this.lastSprite++ ;
+				if ( (Game.loops%(this.settings.spriteMod||1)) == 0 ) this.lastSprite++ ;
 				if ( typeof this.settings.sprites[this.lastSprite] == 'undefined' ) this.lastSprite = 0 ;
 				this.box.css({'backgroundPosition': -1*this.settings.sprites[this.lastSprite]*this.settings.width+'px 0'}) ;
 			}
@@ -270,7 +248,7 @@ Layout.prototype.createObj = function(opts) {
     									this.settings.explode(this) ;
     								}
     								
-    								Wyrian.log('█▬█ █ ▀█▀') ;
+    								Game.log('█▬█ █ ▀█▀') ;
     							}
     						}
     						

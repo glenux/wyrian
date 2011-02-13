@@ -11,8 +11,8 @@ Layouts.Player = new Layout({
 		type: 'human',
 		sprites: [0,1],
 		origin: {
-			x: Wyrian.width/2 - 80,
-			y: Wyrian.height-220
+			x: Game.width/2 - 80,
+			y: Game.height-220
 		},
 		fireInterval: 300,
 		explode: function(obj) {	
@@ -24,23 +24,23 @@ Layouts.Player = new Layout({
 		animate: function(obj) { 
 		
 			// -- KEY up /down
-			if ( Wyrian.input.keyboard.up ) {
+			if ( Game.input.keyboard.up ) {
 				if ( obj.y > 0 ) obj.y -= obj.parent.settings.speed ;
 			}
-			if ( Wyrian.input.keyboard.down && (obj.y < (Wyrian.height-obj.height) ) ) {
+			if ( Game.input.keyboard.down && (obj.y < (Game.height-obj.height) ) ) {
 				obj.y += obj.parent.settings.speed;
 			}
 			
 			// -- Left/Right move : choose sprite sequence to display
-			if ( Wyrian.input.keyboard.left && (obj.x > 0)) {
+			if ( Game.input.keyboard.left && (obj.x > 0)) {
 				obj.x -= obj.parent.settings.speed;
 			} 
-			if ( Wyrian.input.keyboard.right && (obj.x < Wyrian.width-obj.width) ) {
+			if ( Game.input.keyboard.right && (obj.x < Game.width-obj.width) ) {
 				obj.x += obj.parent.settings.speed;
 			} 
 			
 			// -- Press Space : fire
-			if ( Wyrian.input.keyboard.space ) {
+			if ( Game.input.keyboard.space ) {
 				obj.parent.fire(obj) ;
 			}
 
@@ -56,7 +56,7 @@ Layouts.Player = new Layout({
 		animate: function(obj) {
 			obj.settings.spriteMod = 3 ;
 			obj.settings.sprites = [0,1] ;
-			if ( Wyrian.input.keyboard.up ) {
+			if ( Game.input.keyboard.up ) {
 				obj.settings.sprites = [2,3,4] ;
 			}
 		}
@@ -124,7 +124,7 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 	  	if ( obj.deleteAfter ) return false;
 	  	if ( obj.explosing ) {
 	  	
-	  		Wyrian.log(obj) ;
+	  		Game.log(obj) ;
 	  		return false ;
 	  	}
 	    obj.y += obj.settings.speed*obj.settings.direction ;

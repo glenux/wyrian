@@ -4,13 +4,14 @@ Layouts.Ennemies = new Layout({
 
 	// -- Define elements to draw with options
 	el: [],
+	images: ['images/sprites/alien_1.png?_=1', 'images/sprites/alien_2.png?_=1', 'images/sprites/explosion-sprite.png' ],
 	
 	// -- Define current Speed
 	speed: 7,
 	direction: 1,
 	
 	// -- Define canvas parent
-	dom: $('div#game')
+	dom: $('div#ground')
 	
 }) ;
 
@@ -32,13 +33,13 @@ Layouts.Ennemies.createRandom = function(opts) {
 		{
 			width: 80,
 			height: 80,
-			imageSrc: 'images/sprites/alien_1.png?_=1',
+			imageSrc: self.settings.images[0],
 			sprites: [0,1,2,3]
 		},
 		{
 			width: 80,
 			height: 80,
-			imageSrc: 'images/sprites/alien_2.png?_=1',
+			imageSrc: self.settings.images[1],
 			sprites: [0]
 		}
 	] ;
@@ -60,8 +61,8 @@ Layouts.Ennemies.createRandom = function(opts) {
     	obj.box.hide(0);
     	obj = self.reinitObj(obj);
     	
-    	Wyrian.score = Wyrian.score || 0 ;
-    	Wyrian.score += obj.settings.power ;
+    	Game.score = Game.score || 0 ;
+    	Game.score += obj.settings.power ;
     } ;
 	alien.animate = function (obj) {
 		if ( obj.explosing ) {
@@ -87,7 +88,7 @@ Layouts.Ennemies.createExplosion = function(object) {
 		type: 'neutral', 
 		width:330,
 		height:330,
-		imageSrc: 'images/sprites/explosion-sprite.png',
+		imageSrc: self.settings.images[2],
 		sprites: [0,1,2],
 		origin: {x: object.x-330/2+object.width/2, y: object.y-330/2+object.height/2},
 		animate: function(obj) {

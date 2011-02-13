@@ -68,7 +68,7 @@ app.prototype.log = function(txt) {
 app.prototype.loopAnimation = function() {	
 	
 	// -- Search for elements that have to be updated
-	Wyrian.activeElements = 0 ;
+	Game.activeElements = 0 ;
 	for ( var i in Layouts ) {
 		var _layout = Layouts[i] ;
 		if ( _layout && _layout.running ) {
@@ -77,7 +77,7 @@ app.prototype.loopAnimation = function() {
 	}
 	
 	// -- Get level
-	Level = Math.floor((Wyrian.score||0)/1000) ;
+	Level = Math.floor((Game.score||0)/1000) ;
 	
 	// -- Create ennemies if needed
 	var numEnnemies = 0 ;
@@ -90,10 +90,10 @@ app.prototype.loopAnimation = function() {
 	}
 	
 	// -- Init loops counter
-	Wyrian.loops = Wyrian.loops||0 ;
+	Game.loops = Game.loops||0 ;
 	
 	// -- Init vars
-	if ( Wyrian.loops == 0 ) {
+	if ( Game.loops == 0 ) {
  		this.frameCount = 0;
  		this.fps = 0;
  		this.maxfps = 1 / (FPS / 1000);
@@ -111,11 +111,11 @@ app.prototype.loopAnimation = function() {
     this.frameCount++;
 	
 	// -- Increase loop counter
-	Wyrian.loops++ ;
+	Game.loops++ ;
 	
 	// -- Refresh Scores and HUD informations
-	$('#score span').html(Wyrian.score) ;
-	$('#activeElements span').html(Wyrian.activeElements) ;
+	$('#score span').html(Game.score) ;
+	$('#activeElements span').html(Game.activeElements) ;
 	$('#fpsCounter span').html(this.fps) ;
 }
 

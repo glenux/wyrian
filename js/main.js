@@ -1,47 +1,129 @@
-var keys = {};
-
-function controlship() {
-	for (var i in keys) {
-		
-		//a pressed
-	       if (i == 65) {
-		$('#ship').css('left', (parseInt($('#ship').css('left'),10) - 10) + 'px');
-
-		}
-		// s pressed
-		if (i == 83) {
-			$('#ship').css('top', (parseInt($('#ship').css('top'),10) + 10) + 'px');
-		}
-		// d pressed
-		if (i == 68) {
-			$('#ship').css('left', (parseInt($('#ship').css('left'),10) + 10) + 'px');
-		}
-		// w pressed
-		if (i == 87) {
-			$('#ship').css('top', (parseInt($('#ship').css('top'),10) - 10) + 'px');
-		}
-	    }
-
-		
-}
-
-$(document).keydown(function (evt) {
-	var code = evt.keyCode || evt.which;
-	keys[code] = true;
-});
-
-$(document).keyup(function (evt) {
-	var code = evt.keyCode || evt.which;
-	delete keys[code];
-    	
+var Game = new app({
+	'layers': [
+		'order!layouts/BgLayer',
+		'order!layouts/PlayerLayer',
+		'order!layouts/Ennemies'
+	],
+	'wrapper': $('#GameContainer') 
+}) ;
+				
+// Init Application and bind all games events
+jQuery(document).ready(function() {
 	
-});
+	/**************************************************************************
+	* Load Dependencies & Create Application
+	***************************************************************************/
+	var baseLibs = [
+		'order!libs/jquery.transform-0.9.3.min',
+		'order!layouts/LayoutClass'
+	],
+	GameVersion = $('#version').html() ;
+	
+	require({
+	      baseUrl: "js/",
+	      urlArgs: "bust=" + GameVersion
+	    }, 
+	    baseLibs,
+	    
+	    // -- All objects are loaded => can run
+	    function() {
+	    
+	    	// -- Init Stage or show IE popup
+	    	if ( ! $.browser.msie  || ( $.browser.version >= 9 ) ) {
+	    		Game.init() ;
+	    	} else {
+	    		alert('Sorry but this game only works in good navigators. Please download Google Chrome or Firefox' ) ;
+	    	}
+	    	
+		}
+	);	
+	
+	
+	/**************************************************************************
+	* Game Controls Events
+	***************************************************************************/
+	
+	// -- Game is loaded
+	$(document).bind('gameLoaded', function(e, res) {
+	
+	}); 	
+	
+	// -- Init Game
+	$(document).bind('gameInit', function(e, res) {
+		$(document).trigger('gameReset') ;
+	}) ;	
+	
+	// -- Game Reset
+	$(document).bind('gameReset', function(e, res) {
+		Game.score = 0 ;
+		Game.loops = 0 ;
+		Layouts.Ennemies.els = [] ;
+		$('.sprite').remove() ;
+		$.each(Layouts, function(key, val){
+			Layouts[key].running = true ;
+			$.each(val.els, function(key2, val2){
+				if ( Layouts[key].els.length && Layouts[key].els[key2] ) {
+					Layouts[key].els[key2].x = Layouts[key].els[key2].settings.origin.x ;
+					Layouts[key].els[key2].y = Layouts[key].els[key2].settings.origin.y ;
+				}
+			}) ;
+		}) ;
+		
+		$('#ground, #ship').fadeTo(500, 1) ;
+		
+		if ( timers.loopGame ) clearInterval(timers.loopGame) ;
+		timers.loopGame = setInterval(Game.loopAnimation, 1000/FPS) ;
+	}) ;
+	
+	// -- Start Animation
+	$(document).bind('gameStart', function(e, res) {
+		
+		$('#hud').fadeIn(500) ;
+		
+		if ( timers.loopGame ) clearInterval(timers.loopGame) ;
+		timers.loopGame = setInterval(Game.loopAnimation, 1000/FPS) ;
+	}) ;
+	
+	// -- On Complete Launch
+	$(document).bind('gameComplete', function(e, res) {
+		
+		// -- Stop layouts running
+		$('.sprite').not('.explosion').remove() ;
+		Layouts.Ennemies.running = false ;
+		Layouts.Background.running = false ;
+		
+		// -- Show game over overlay
+		$('#game-over:hidden').fadeIn(500) ;
+		$('#ground, #ship').fadeTo(500, 0.2) ;
+		
+		// -- Stop loopAnimation
+		if ( timers.loopGame ) clearInterval(timers.loopGame) ;
+		
+	}) ;
+	
+	
+	// -- Bind Start Button
+	$('#start-game').click(function() {
+		$('#game-intro:visible').fadeOut(500, function() {
+			$(document).trigger('gameStart') ;
+		}) ;
+	}).hover(function() {
+		$(this).addClass('hover') ;
+	}, function() {
+		$(this).removeClass('hover') ;
+	}) ;
+	
+	
+	// -- Bind Restart Screen controls
+	$('#restart-game').click(function() {
+		$('#game-over:visible').fadeOut(500, function() {
+			$(document).trigger('gameReset') ;
+		}) ;
+	}).hover(function() {
+		$(this).addClass('hover') ;
+	}, function() {
+		$(this).removeClass('hover') ;
+	}) ;
+	
 
-function onTimerTick() {
-    controlship();
-}
-
-setInterval(onTimerTick, 33); // 33 milliseconds = ~ 30 frames per sec
-
-
-
+}) ;
