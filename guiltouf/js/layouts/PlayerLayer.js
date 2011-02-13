@@ -8,6 +8,7 @@ Layouts.Player = new Layout({
 		name: 'ship',
 		width: 160,
 		height: 160,
+		type: 'human',
 		sprites: [0,1],
 		origin: {
 			x: Wyrian.width/2 - 80,
@@ -74,6 +75,7 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		sprites: [0,1,2],
 		speed:  40,
 		direction: -1,
+		type: 'human',
 		name: 'bullet',
 		origin: {x:0, y:0}
 	} ;

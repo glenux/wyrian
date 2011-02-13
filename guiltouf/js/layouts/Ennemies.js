@@ -19,6 +19,7 @@ Layouts.Ennemies.createRandom = function(opts) {
 	var self = this ;
 	var bulletConf = {
 		name: 'ennemy',
+		type: 'alien',
 		width: 60,
 		height: 60,
 		power: 40,
@@ -27,6 +28,9 @@ Layouts.Ennemies.createRandom = function(opts) {
 		speed:  Math.round(Math.max(10, Math.random()*20)),
 		direction: 1,
 		origin: {x:Math.round(Math.random()*self.width), y:Math.round(-Math.random()*self.height)},
+		explode: function(obj) {
+		
+		},
 		animate: function (obj) {
 	     	obj.y += obj.settings.speed*obj.settings.direction ;
 	    	if ( obj.y > obj.parent.height+obj.height ) {

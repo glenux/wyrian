@@ -170,10 +170,6 @@ Layout.prototype.createObj = function(opts) {
 				this.lastSprite++ ;
 				if ( typeof this.settings.sprites[this.lastSprite] == 'undefined' ) this.lastSprite = 0 ;
 				this.box.css({'backgroundPosition': -1*this.settings.sprites[this.lastSprite]*this.settings.width+'px 0'}) ;
-				
-				
-				//if ( this.id == 'ship' ) 
-			//		console.log(this.settings.sprites,  -1*this.settings.sprites[this.lastSprite]*this.settings.width+'px 0') ;
 			}
 			
 			// -- Move div
@@ -189,13 +185,98 @@ Layout.prototype.createObj = function(opts) {
 	} ;
 	
 	// -- Animate the Framebuffer into the scene
-	Obj.prototype.animate = function() {
+	Obj.prototype.animate = function() {	
+	
+		// -- Execute custom animate function if specified
 		if ( $.isFunction(this.settings.animate) ) {
 			this.parent = self ;
 			this.settings.animate(this) ;
 		} 
+		
+		// -- Detect collision
+		this.detectCollision() ;
+		
+		// -- Apply effects
 		if ( ! this.nodraw ) this.draw() ;
-	}
+	} ;
+	
+	// -- Detect collision
+	Obj.prototype.detectCollision = function() {
+	
+    	// -- Build an active elements list
+    	this.activeEls = [] ;
+    	
+    	// -- Detect collisions
+    	for ( var i in Layouts ) {
+    		var _layout = Layouts[i] ;
+    		if ( _layout && _layout.running ) {
+    			for ( var j in _layout.els ) {
+    				var el = _layout.els[j],
+    					type = el.name ;
+    				
+    				// -- Make some clean
+    				if (el.deleteAfter) {
+    					delete Layouts[i].els[j] ;
+    				} 
+    				
+    				// -- Detect only defined types
+    				else {
+    					if ( type == 'ennemy' || type == 'bullet' || type == 'ship' || type == 'ship' ) {
+    						
+    						var A = {
+    							x: this.x,
+    							y: this.y,
+    							xX: this.x+this.width,
+    							yY: this.y+this.height
+    						} ;
+    						
+    						var B = {
+    							x: el.x,
+    							y: el.y,
+    							xX: el.x + el.width,
+    							yY: el.y + el.height							
+    						} ;
+    						
+    						// -- Test if in viewport
+    						if ( (type != this.name) && (this.name != 'default') && (el.settings.type != this.settings.type) ) {
+    							
+    							var touchTopRight = ( 
+    								( B.x <= A.xX && B.x >= A.x ) 
+    								&& 
+    								( B.yY >= A.y) && ( B.yY <= A.yY )  
+    							) ? true : false ;
+    							
+    							var touchTopLeft = ( 
+    								( B.x >= A.x && B.x <= A.xX ) 
+    								&& 
+    								( B.yY >= A.y) && ( B.yY <= A.yY )  
+    							) ? true : false ;
+    							
+    							var touchBottomRight = ( 
+    								( B.x >= A.x && B.x <= A.xX ) 
+    								&& 
+    								( B.y >= A.yY) && ( B.y <= A.y )  
+    							) ? true : false ;
+    							
+    							var touchBottomLeft = ( 
+    								( B.xX >= A.x && B.xX <= A.xX ) 
+    								&& 
+    								( B.y >= A.yY) && ( B.y <= A.y )  
+    							) ? true : false ;	
+    							
+    							if ( touchTopRight || touchTopLeft || touchBottomRight || touchBottomLeft ) {
+    								console.log('█▬█ █ ▀█▀') ;
+    							}
+    						}
+    						
+    					}
+    				}
+    			}
+    		}
+    	}
+		
+		
+	} ;
 	
 	// -- Remove object
 	Obj.prototype.deleteObj = function() {

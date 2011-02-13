@@ -110,6 +110,9 @@
 	height: 68px;
 }
 
+#element_0 {
+	border:2px solid green;
+}
 /* Ennemies */
 /*#game .ennemy { border: 1px solid blue; } */
 

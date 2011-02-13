@@ -1,5 +1,5 @@
 // Init Global vars
-var FPS = 30;
+var FPS = 10;
 var Stages = {} ;
 var Level = 1 ;
 var Layouts = {} ;
@@ -72,51 +72,11 @@ app.prototype.log = function(txt) {
 }
 
 // -- Call all canvas updates if declared as 'running'
-app.prototype.loopAnimation = function() {
-
-	// -- Build an active elements list
-	this.activeEls = [] ;
-	
-	// -- Detect collisions
-	console.log('-------------------' ) ;
-	for ( var i in Layouts ) {
-		var _layout = Layouts[i] ;
-		if ( _layout && _layout.running ) {
-			for ( var j in _layout.els ) {
-				var el = _layout.els[j],
-					type = el.name ;
-				
-				// -- Make some clean
-				if (el.deleteAfter ) {
-					delete Layouts[i].els[j] ;
-				} 
-				
-				// -- Detect only defined types
-				else {
-					if ( type == 'ennemy' || type == 'bullet' || type == 'ship' || type == 'ship' ) {
-					
-						var pos = {
-							x: el.x,
-							y: el.y,
-							xX: el.x + el.with,
-							yY: el.x + el.with							
-						}
-						
-						// -- Test if in viewport
-						//if ( pos )
-						//console.log(type, coords) ;
-						
-						
-						
-						
-					}
-				}
-			}
-		}
-	}
-	
+app.prototype.loopAnimation = function() {	
 	
 	// -- Search for elements that have to be updated
+	
+    	console.log('-------------------' ) ;
 	for ( var i in Layouts ) {
 		var _layout = Layouts[i] ;
 		if ( _layout && _layout.running ) {
@@ -124,13 +84,13 @@ app.prototype.loopAnimation = function() {
 		}
 	}
 	
-	// -- Create ennemies
+	// -- Create ennemies if needed
 	var numEnnemies = 0 ;
 	for ( var i in Layouts.Ennemies.els ) {
 		var _el = Layouts.Ennemies.els[i] ;
 		if ( ! _el.deleteAfter ) numEnnemies++ ;
 	}
-	for ( var i = numEnnemies-1 ; i < Level + 3 ; i++ ) {
+	for ( var i = numEnnemies-1 ; i < Level + 0 ; i++ ) {
 		Layouts.Ennemies.createRandom() ;
 	}
 	
