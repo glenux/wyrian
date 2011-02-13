@@ -28,7 +28,7 @@ var app = function(opts) {
 	
 	// Listen for inputs
 	this.input = new this.Input() ;
-	
+	 
 	// Return object
 	return this;
 } ;
@@ -40,7 +40,7 @@ app.prototype.init = function() {
 	
 	require({
 	      baseUrl: "js/",
-	      urlArgs: "bust=" + self.version
+	      urlArgs: "bust=" + GameVersion
 	    },
 	    
 	    // -- Layout to load
@@ -81,12 +81,14 @@ app.prototype.loopAnimation = function() {
 	
 	// -- Create ennemies if needed
 	var numEnnemies = 0 ;
-	for ( var i in Layouts.Ennemies.els ) {
-		var _el = Layouts.Ennemies.els[i] ;
-		if ( ! _el.deleteAfter ) numEnnemies++ ;
-	}
-	for ( var i = numEnnemies-1 ; i < Level + 3 ; i++ ) {
-		Layouts.Ennemies.createRandom() ;
+	if ( Layouts.Ennemies ) {
+		for ( var i in Layouts.Ennemies.els ) {
+			var _el = Layouts.Ennemies.els[i] ;
+			if ( ! _el.deleteAfter ) numEnnemies++ ;
+		}
+		for ( var i = numEnnemies-1 ; i < Level + 3 ; i++ ) {
+			Layouts.Ennemies.createRandom() ;
+		}
 	}
 	
 	// -- Init loops counter

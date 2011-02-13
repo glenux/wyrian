@@ -95,8 +95,8 @@ Layout.prototype.createObj = function(opts) {
 		if ( ! this.box.length ) {
 		
 			this.box = $('<div>', {
-				class:'sprite '+this.name,
-				id: this.id
+				'class':'sprite '+this.name,
+				'id': this.id
 			}) ;
 			
 			this.cssObj = {

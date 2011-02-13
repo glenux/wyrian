@@ -5,7 +5,8 @@ var Game = new app({
 		'order!layouts/Ennemies'
 	],
 	'wrapper': $('#GameContainer') 
-}) ;
+}),
+GameVersion = 0 ;
 				
 // Init Application and bind all games events
 jQuery(document).ready(function() {
@@ -13,11 +14,11 @@ jQuery(document).ready(function() {
 	/**************************************************************************
 	* Load Dependencies & Create Application
 	***************************************************************************/
+	GameVersion = $('#version').html() ;
 	var baseLibs = [
 		'order!libs/jquery.transform-0.9.3.min',
 		'order!layouts/LayoutClass'
-	],
-	GameVersion = $('#version').html() ;
+	] ;	
 	
 	require({
 	      baseUrl: "js/",
