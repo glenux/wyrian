@@ -99,6 +99,11 @@ Layouts.Ennemies.createExplosion = function(object) {
 	var newObj = this.createObj(explosion) ;
 	self.els.push(newObj) ;
 	
+	if ( timers.playSoundExplode ) clearTimeout(timers.playSoundExplode) ;
+	timers.playSoundExplode = setTimeout(function() {
+		soundManager.play('explode') ;
+	}, 1000/FPS) ;
+	
 	setTimeout(function() {
 		newObj.deleteObj() ;
 		if ( ! Layouts.Player.running ) 

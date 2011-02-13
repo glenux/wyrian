@@ -159,5 +159,8 @@ Layouts.Player.fire = function(obj) {
 	for ( var i in bullets ) {
 		this.els.push(bullets[i]) ;
 	}
+	
+	// Play sound
+	soundManager.play('shoot') ;
 }
 

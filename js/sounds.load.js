@@ -16,82 +16,51 @@
 	// -- when ready, preload sounds
 	soundManager.onready(function() {
 
+		// -- Background Music
+		soundManager.createSound({
+		  id: 'music',
+		  url: '/audio/bg_music.ogg',
+		  autoLoad: true,
+		  autoPlay: false,
+		  multiShot: false,
+		  volume: 10,
+		  loop: true,
+		  onload: function() {
+   			this.play() ;
+  		  },
+  		  onfinish: function() {
+		    this.play();
+  		  }
+		});
 		
-		// -- Click
+		// -- Click 
 		soundManager.createSound({
 		  id: 'click',
-		  url: '/assets/mp3/50559__broumbroum__sf3_sfx_menu_select_L.ogg',
+		  url: '/audio/click.ogg',
 		  autoLoad: true,
 		  autoPlay: false,
 		  multiShot: false,
 		  volume: 50
 		});
 		
-		// -- Validate
+		// -- Fire
 		soundManager.createSound({
-		  id: 'validate',
-		  url: '/assets/mp3/50562__broumbroum__sf3_sfx_menu_validate_L.ogg',
+		  id: 'shoot',
+		  url: '/audio/big_laser.ogg',
 		  autoLoad: true,
 		  autoPlay: false,
-		  multiShot: false,
-		  volume: 50
+		  multiShot: true,
+		  volume: 30
 		});
 		
-		
-		// -- Boom
+		// -- Explode
 		soundManager.createSound({
-		  id: 'boom',
-		  url: '/assets/mp3/boom.ogg',
+		  id: 'explode',
+		  url: '/audio/explode.ogg',
 		  autoLoad: true,
 		  autoPlay: false,
-		  volume: 50
-		});
-		
-		// -- Touch
-		soundManager.createSound({
-		  id: 'touch',
-		  url: '/assets/mp3/hopping.ogg',
-		  autoLoad: true,
-		  autoPlay: false,
-		  volume: 50
-		});
-		
-		// -- End
-		soundManager.createSound({
-		  id: 'endGame',
-		  url: '/assets/mp3/fall-explosion.ogg',
-		  autoLoad: true,
-		  autoPlay: false,
-		  volume: 50
-		});
-		
-		// -- Nitro
-		soundManager.createSound({
-		  id: 'nitro',
-		  url: '/assets/mp3/rocket-burn.ogg',
-		  autoLoad: true,
-		  autoPlay: false,
-		  loops: 10,
-		  volume: 50
-		});
-		
-		
-		// -- Mad Cow
-		soundManager.createSound({
-		  id: 'cow',
-		  url: '/assets/mp3/cow.ogg',
-		  autoLoad: true,
-		  autoPlay: false,
-		  volume: 50
-		});
-		
-		// -- Wizz
-		soundManager.createSound({
-		  id: 'wizz',
-		  url: '/assets/mp3/siren.ogg',
-		  autoLoad: true,
-		  autoPlay: false,
-		  volume: 50
+		  multiShot: true,
+		  volume: 10
 		});
 		
 	});

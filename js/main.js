@@ -105,6 +105,7 @@ jQuery(document).ready(function() {
 	
 	// -- Bind Start Button
 	$('#start-game').click(function() {
+		soundManager.play('click') ;
 		$('#game-intro:visible').fadeOut(500, function() {
 			$(document).trigger('gameStart') ;
 		}) ;
@@ -117,6 +118,7 @@ jQuery(document).ready(function() {
 	
 	// -- Bind Restart Screen controls
 	$('#restart-game').click(function() {
+		soundManager.play('click') ;
 		$('#game-over:visible').fadeOut(500, function() {
 			$(document).trigger('gameReset') ;
 		}) ;
