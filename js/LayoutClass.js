@@ -236,7 +236,7 @@ Layout.prototype.createObj = function(opts) {
     						} ;
     						
     						// -- Test if in viewport
-    						if ( (type != this.name) && (this.name != 'default') && (el.settings.type != this.settings.type) ) {
+    						if ( (type != this.name) && (this.name != 'default' && this.name != 'explosion') && (el.settings.type != this.settings.type) ) {
     							
     							var touchTopRight = ( 
     								( B.x <= A.xX && B.x >= A.x ) 

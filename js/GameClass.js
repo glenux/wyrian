@@ -39,7 +39,7 @@ app.prototype.init = function() {
 	var self = this ;
 	
 	require({
-	      baseUrl: "/js/",
+	      baseUrl: "js/",
 	      urlArgs: "bust=" + self.version
 	    },
 	    
@@ -75,6 +75,9 @@ app.prototype.loopAnimation = function() {
 			_layout.update() ;
 		}
 	}
+	
+	// -- Get level
+	Level = Math.floor((Wyrian.score||0)/1000) ;
 	
 	// -- Create ennemies if needed
 	var numEnnemies = 0 ;

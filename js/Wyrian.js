@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
 	* Load Dependencies & Create Application
 	***************************************************************************/
 	require({
-	      baseUrl: "/js/",
+	      baseUrl: "js/",
 	      urlArgs: "bust=" + Wyrian.version
 	    }, Wyrian.settings.libs,
 	    
@@ -48,7 +48,6 @@ jQuery(document).ready(function() {
 	
 	// -- Game is loaded
 	$(document).bind('gameLoaded', function(e, res) {
-		
 		if ( timers.loopGame ) clearInterval(timers.loopGame) ;
 		timers.loopGame = setInterval(Wyrian.loopAnimation, 1000/FPS) ;
 	}); 
@@ -63,11 +62,14 @@ jQuery(document).ready(function() {
 		Wyrian.score = 0 ;
 		Wyrian.loops = 0 ;
 		Layouts.Ennemies.els = [] ;
+		$('.sprite').remove() ;
 		$.each(Layouts, function(key, val){
 			Layouts[key].running = true ;
 			$.each(val.els, function(key2, val2){
-				Layouts[key].els[key2].x = Layouts[key].els[key2].settings.origin.x ;
-				Layouts[key].els[key2].y = Layouts[key].els[key2].settings.origin.y ;
+				if ( Layouts[key].els.length && Layouts[key].els[key2] ) {
+					Layouts[key].els[key2].x = Layouts[key].els[key2].settings.origin.x ;
+					Layouts[key].els[key2].y = Layouts[key].els[key2].settings.origin.y ;
+				}
 			}) ;
 		}) ;
 		
@@ -84,17 +86,27 @@ jQuery(document).ready(function() {
 	$(document).bind('gameComplete', function(e, res) {
 		
 		// -- Stop layouts running
-		$('.sprite').remove() ;
+		$('.sprite').not('.explosion').remove() ;
 		Layouts.Ennemies.running = false ;
 		Layouts.Background.running = false ;
+		
+		// -- Show game over overlay
+		$('#game-over:hidden').fadeIn(500) ;
 		
 		// -- Stop loopAnimation
 		if ( timers.loopGame ) clearInterval(timers.loopGame) ;
 		
 	}) ;
 	
-	$('#debug').click(function() {
-		$(document).trigger('gameReset') ;
+	// -- Bind Restart Screen controls
+	$('#game-over #restart-game').click(function() {
+		$('#game-over:visible').fadeOut(500, function() {
+			$(document).trigger('gameReset') ;
+		}) ;
+	}).hover(function() {
+		$(this).addClass('hover') ;
+	}, function() {
+		$(this).removeClass('hover') ;
 	}) ;
 
 }) ;

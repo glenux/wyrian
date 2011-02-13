@@ -50,7 +50,7 @@ Layouts.Player = new Layout({
 		id: 'ship_reactor',
 		width: 44,
 		height: 68,
-		imageSrc: '/images/sprites/reactor_fire_sprite.png',
+		imageSrc: 'images/sprites/reactor_fire_sprite.png',
 		sprites: [0,1],
 		nomove: true,
 		animate: function(obj) {
@@ -77,7 +77,7 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 	
 	var bulletConf = {
 		power: 40,
-		imageSrc: '/images/bullet-electric-sprite.png',
+		imageSrc: 'images/bullet-electric-sprite.png',
 		sprites: [0,1,2],
 		speed:  40,
 		direction: -1,
@@ -96,7 +96,7 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		bulletConf.width = 16 ;
 		bulletConf.height = 64 ;
 		bulletConf.sprites = false ;
-		bulletConf.imageSrc = '/images/12px-long-blue.png' ;
+		bulletConf.imageSrc = 'images/12px-long-blue.png' ;
 		bulletConf.origin.x = obj.x-6+obj.width/2 ;
 		bulletConf.origin.y = obj.y - bulletConf.height ;
 	}

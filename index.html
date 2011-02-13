@@ -1,11 +1,33 @@
-<!doctype html>
-<html>
-<head>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+<head> 
+
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+
+<!-- Facebook Meta Tags -->
+<title>Wyrian - A clone Game of Tyrian in HTML5</title>
+<meta property="og:type" content="game" />
+<meta property="og:title" content="Wyrian - A clone Game of Tyrian in HTML5" />
+<meta property="og:site_name" content="Wyrian" />
+<meta property='og:url' content='http://www.html5place.com/lab/wyrian/' /> 
+<meta property="fb:admins" content="100001668966106,582526084,100001643794747"/>
+<meta property="og:description" content="An alpha version clone of the Tyrian Game. Developed during the HTML5 Game Jam 2011 at Paris."/>
+
 	<link rel="stylesheet" media="all" href="css/style.css" />
 	<link  href="http://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet" type="text/css" >
 </head>
 <body>
-	<div id="debug">RESET</div>
+	<div id="game-over">
+		<div class="text orbitron">GAME OVER</div>
+		<div id="restart-game" class="orbitron">Restart</div>
+	</div>
+	<div id="credits" class="">
+		<strong>HTML5 Game Jam 2011</strong><br>
+		<strong><a href="https://github.com/glenux/wyrian" target="_blank" title="View Project on GitHub">Wyrian</a> v0.2a</strong> | <a href="http://www.html5place.com/" title="View my Website">Guillaume DE LA RUE</a><br>Thanks to <a href="https://github.com/glenux" target="_blank" title="View profile of Glenux on GitHub">Glenux</a> for design and Matthieu Bosquet and all people presents :)
+	</div>
 	<div class="container" id="GameContainer">
 		<div id="background" class="layout"></div>
 		<div id="ground" class="layout"></div>

@@ -27,7 +27,7 @@
 }
 
 #background {
-	background: transparent url(/images/debug-bg.jpg) repeat 0 0;
+	background: transparent url(../images/debug-bg.jpg) repeat 0 0;
 	z-index: 0;	
 }
 
@@ -51,7 +51,7 @@
 	display: block;
 	width: 70px;
 	height: 55px;
-	background: transparent url(/images/sprites/wings_eagle_sprite.png) no-repeat 0 0;
+	background: transparent url(../images/sprites/wings_eagle_sprite.png) no-repeat 0 0;
 }
 
 #ship .wing.right { left: 83px; background-position: right 0; }
@@ -62,7 +62,7 @@
 	left: 0;
 	width: 154px;
 	height: 137px;
-	background: transparent url(/images/sprites/spaceship_body.png) no-repeat 0 0;
+	background: transparent url(../images/sprites/spaceship_body.png) no-repeat 0 0;
 }
 
 #ship .ship-canon {
@@ -72,7 +72,7 @@
 	left: 71px;
 	width: 18px;
 	height: 40px;
-	background: transparent url(/images/sprites/weapon_pilot.png) no-repeat 0 0;
+	background: transparent url(../images/sprites/weapon_pilot.png) no-repeat 0 0;
 }
 
 #ship .ship-foray {
@@ -82,7 +82,7 @@
 	left: 117px;
 	width: 19px;
 	height: 33px;
-	background: transparent url(/images/sprites/weapon_foray.png) no-repeat 0 0;
+	background: transparent url(../images/sprites/weapon_foray.png) no-repeat 0 0;
 }
 
 #ship .ship-foray.right {
@@ -93,7 +93,7 @@
 #ship .ship-reactor {
 	position: absolute;
 	display: block;
-	background: transparent url(/images/sprites/reactor_drum.png) no-repeat 0 0;
+	background: transparent url(../images/sprites/reactor_drum.png) no-repeat 0 0;
 	top:85px;
 	left:72px;
 	width: 15px;
@@ -103,7 +103,7 @@
 #ship .ship_reactor_fire {
 	position: absolute;
 	display: block;
-	background: transparent url(/images/sprites/reactor_fire_sprite.png) no-repeat 0px 0;
+	background: transparent url(../images/sprites/reactor_fire_sprite.png) no-repeat 0px 0;
 	top:88px;
 	left: 58px;
 	width: 44px;
@@ -156,11 +156,62 @@
 }
 
 /* Debug Panel */
-#debug {
+#game-over {
 	position: absolute;
-	display: block;
-	right: 10px;
-	top: 10px;
+	display: none;
+	left: 0px;
+	top: 50%;
+	margin-top: -100px;
 	color:#fff;
 	z-index: 1000;
+	width:100%;
+	text-align: center;
+}
+
+#game-over .text {
+	position: relative;
+	display: block;
+	font-size: 64px;
+}
+
+#game-over #restart-game {
+	position: relative;
+	display: block;
+	margin: 20px auto;
+	width: 300px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 5px solid rgba(0,0,0, 0.3);
+	padding: 15px 0 10px;
+	font-size: 24px;
+	background: rgba(0,0,0, 0.1);
+}
+
+#game-over #restart-game.hover {
+	cursor: pointer;
+	background: rgba(0,0,0, 0.2);
+	box-shadow: 0 0 10px rgba(27, 161, 255, 0.5) ;
+}
+
+/* Credits */
+#credits {
+	position: absolute;
+	display: block;
+	right: 20px;
+	bottom: 10px;
+	color:#ddd;
+	z-index: 1000;
+	text-align: right;
+	font-size: 12px;
+	font-family: "Lucida Grande", Verdana;
+}
+
+#credits a {
+	text-decoration: none;
+	color: #1ba1ff;
+}
+
+#credits a:hover {
+	text-decoration: underline;
 }
