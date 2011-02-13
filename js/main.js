@@ -30,7 +30,7 @@ jQuery(document).ready(function() {
 	    function() {
 	    
 	    	// -- Init Stage or show IE popup
-	    	if ( ! $.browser.msie  || ( $.browser.version >= 9 ) ) {
+	    	if ( ! $.browser.msie  || ( $.browser.msie && $.browser.version >= 9 ) ) {
 	    		Game.init() ;
 	    	} else {
 	    		alert('Sorry but this game only works in good navigators. Please download Google Chrome or Firefox' ) ;

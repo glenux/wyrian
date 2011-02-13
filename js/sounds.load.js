@@ -19,14 +19,17 @@
 		// -- Background Music
 		soundManager.createSound({
 		  id: 'music',
-		  url: '/audio/bg_music.ogg',
+		  url: 'audio/bg_music.ogg',
 		  autoLoad: true,
 		  autoPlay: false,
 		  multiShot: false,
 		  volume: 10,
 		  loop: true,
 		  onload: function() {
-   			this.play() ;
+		  	var soundObj = this;
+		  	setTimeout(function() {
+		  		soundObj.play() ;
+		  	}, 1000) ;
   		  },
   		  onfinish: function() {
 		    this.play();
@@ -36,7 +39,7 @@
 		// -- Click 
 		soundManager.createSound({
 		  id: 'click',
-		  url: '/audio/click.ogg',
+		  url: 'audio/click.ogg',
 		  autoLoad: true,
 		  autoPlay: false,
 		  multiShot: false,
@@ -46,7 +49,7 @@
 		// -- Fire
 		soundManager.createSound({
 		  id: 'shoot',
-		  url: '/audio/big_laser.ogg',
+		  url: 'audio/big_laser.ogg',
 		  autoLoad: true,
 		  autoPlay: false,
 		  multiShot: true,
@@ -56,7 +59,7 @@
 		// -- Explode
 		soundManager.createSound({
 		  id: 'explode',
-		  url: '/audio/explode.ogg',
+		  url: 'audio/explode.ogg',
 		  autoLoad: true,
 		  autoPlay: false,
 		  multiShot: true,
