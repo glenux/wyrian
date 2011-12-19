@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	
+
 <div id="content">
 
  <div id="top">
@@ -72,7 +72,7 @@
 		<li><a href="../#smsoundmethods">Sound Object (SMSound) API</a></li>
 	   </ul>
 	  </li>
-	
+
 	  <li>
 	   <strong><a href="#">Download</a></strong>
 	   <ul>
@@ -80,7 +80,7 @@
 		<li><a href="#revision-history">Revision History</a></li>
 	   </ul>
 	  </li>
-	
+
 	  <li>
 	   <a href="../technotes/">Technical Notes</a>
 	   <ul>
@@ -102,7 +102,7 @@
 	 </ul>
 	 <div class="clear"></div>
 	</div>
-	
+
  </div>
 
  <div id="main" class="triple">
@@ -121,38 +121,38 @@
 		</div>
 
 		<div id="newest" class="columnar">
-			
+
 			<div class="c1">
 				<h2>Get SoundManager 2</h2>
 				<p>Get the latest and greatest.</p>
 			</div>
-			
+
 			<div class="c2">
 				<h3>Download SoundManager 2</h3>
 				<p><b>Latest changes:</b> Simplified <code>onready()</code> behaviour (see <a href="#sm2-20110101-api" class="warning">potential <code>onready()</code> regression note</a>), new <code>ontimeout()</code> handler, Webkit + MovieStar 30-second-pause fix. See <a href="#history">revision history</a> for details.</p>
-				
+
 				<p style="padding-top:0.5em"><a href="../../download/soundmanagerv297a-20110101.zip" title="Download SoundManager 2" class="norewrite feature">Download SoundManager 2.97a.20110101</a></p>
 				<p style="padding-top:0.5em">Also on Github (dev branches, forks etc.): <a href="http://github.com/scottschiller/SoundManager2">http://github.com/scottschiller/SoundManager2</a> - Related: <a href="http://www.flickr.com/photos/schill/5305386425/">A year of commits</a> (Gource visualization)</p>
 				<p><b>Performance tip:</b> SM2's code size varies from 90 KB (debug) down to 10 KB (optimized) over HTTP; check the <a href="../getstarted/#basic-inclusion" title="Including SoundManager 2 on your site: Script build options">pre-optimized builds</a> for details.</p>
 				<p><b>Side reading:</b> <a href="http://24ways.org/2010/the-state-of-html5-audio">"Probably, Maybe, No": The State of HTML5 Audio</a>, an article written for 24ways.org touching on some of the current issues and future promise of audio in HTML.</p>
 			</div>
-			
+
 		</div>
 
-		
+
 		<div id="history" class="columnar">
-			
+
 			<div class="c1">
 				<h2>Revision History</h2>
 				<p>Latest changes and archived notes from bug fixes, API updates, feature development etc.</p>
 			</div>
-			
+
 			<div class="c2">
-				
+
 			  <div class="f-block c-revision-history">
 
 			  <h3 id="revision-history">Revision History</h3>
-			
+
 			  <p>A changelog of sorts.</p>
 
 			  <ul id="revision-list" class="standard">
@@ -160,9 +160,9 @@
 			   <li class="in">
 			    <h3><b>V2.97a.20110101</b> - Simplified <code>onready()</code> behaviour (see <a href="#sm2-20110101-api" class="warning">potential <code>onready()</code> regression note</a>), new <code>ontimeout()</code> handler, Webkit + MovieStar 30-second-pause fix</h3>
 				<p><code>onready()</code> is now called only for SM2 init success (makes default case easier, no need for "supported" check) - new <code>ontimeout()</code> is called only for failure case, ie., flash blocked/missing. Special Webkit/MovieStar won't-resume-after-30-seconds-paused fix. <code>soundManager.supported()</code> renamed to <code>soundManager.ok()</code> (old method aliased for the time being.)</p>
-				
+
 			    <ul class="double">
-			
+
 			     <li class="in">
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -210,7 +210,7 @@ soundManager.ontimeout(function(){
                    <li>Code cleanup: Took the unsupported "jsAMP" demo (2007 prototype) out back and shot it.</li>
                    <li>360&deg; UI demo: New "allowMultiple" config option, let 2+ sounds play at once etc. (Default: false, one at a time.)</li>
                    <li>360&deg; UI, canvas visualization demo: Minor layout, UI, code tweaks</li>
-                   <li>API/docs/demos reference and use updated onready()/ontimeout() methods.</li> 
+                   <li>API/docs/demos reference and use updated onready()/ontimeout() methods.</li>
 			      </ul>
 			     </li>
 
@@ -220,9 +220,9 @@ soundManager.ontimeout(function(){
 			   <li class="in">
 			    <h3><b>V2.97a.20101221</b> - HTML5 loading/progress and RTMP tweaks, <code>onready()</code> double-firing fix, <code>hasPriority</code> for mobile flash, Muxtape-style player now AJAX-friendly (<a href="../../download/soundmanagerv297a-20101221.zip" title="Download SoundManager 2" class="norewrite">Download archived version</a>)</h3>
 				<p>Improved HTML5 <code>whileloading()</code> / <code>whileplaying()</code>, <code>unload</code> and event handling. <code>hasPriority</code> for off-screen SWF loading on mobile, replaces old mobileFlash positioning tricks. Effectively re-wrote page player (Muxtape-style) demo to use event delegation + read live DOM, so should not break in AJAX cases. RTMP <code>onplay()</code> / <code>play()</code> / <code>buffering</code> fixes, <code>setPosition()</code> regression fix.</p>
-				
+
 			    <ul class="double">
-			
+
 			     <li class="in">
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -265,9 +265,9 @@ soundManager.ontimeout(function(){
 			   <li class="in">
 			    <h3><b>V2.97a.20101010</b> - Code cleanup, HTML5 audio tweaks, merged RTMP fork, removal of experimental video, optional usePolicyFile crossdomain.xml feature (<a href="../../download/soundmanagerv297a-20101010.zip">Download archived version</a>)</h3>
 				<p>Shuffling of SoundManager 2 core, approximately 5% shaved off full debug-enabled file size after bug fixes, additional comments, new features and so on. Internal event handling code cleaned up. .SWF builds optimized, Flash 9 non-debug version now under 10 KB. Debug version now flash debugger-enabled. Merged GitHub user kjvarga's RTMP fork including improvements for Red5 + Flash Media Server streaming cases - buffering, event and state handling. Experimental video feature is toast, createVideo() no longer implemented. iPhone + iPad touch events on page player + 360&deg; player UI demos; tap and drag to seek, etc.</p>
-				
+
 			    <ul class="double">
-			
+
 			     <li class="in">
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -313,9 +313,9 @@ soundManager.ontimeout(function(){
 			   <li class="in">
 			    <h3><b>V2.96a.20100822</b> - HTML5 audio support no longer alpha, Safari 5.0.1/SL HTML5 audio issues continue, iPad/iPhone "play through", Flash tweak for Android (<a href="../../download/soundmanagerv296a-20100822.zip">Download archived version</a>)</h3>
 				<p><code>useHTML5Audio</code> feature now considered beta-worthy, though disabled by default to be safe (with the exception of iPhone + iPad.) iPhone/iPad will now play a sequence of sounds, user interaction only required to start first one. Flash on-screen positioning tweak for Android devices that run Flash. Safari 5.0.1 on Snow Leopard exhibits same buggy HTML5 audio issue, disabled by default; Apple have been notified. IE 9 "Platform Preview 4" has <code>&lt;audio&gt;</code> but no <code>Audio()</code> support (yet?) See <a href="https://connect.microsoft.com/IE/feedback/details/586311/audio-but-no-audio-support">bug #586311</a> (may require connect.microsoft.com / Windows Live ID, login first etc.)</p>
-				
+
 			    <ul class="double">
-			
+
 			     <li class="in">
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -346,11 +346,11 @@ soundManager.ontimeout(function(){
 
 			   <li class="in">
 			    <h3><b>V2.96a.20100624</b> - Safari 5/Snow Leopard 10.6.3/10.6.4 HTML5 Audio() issue, X-domain SWF build fixes (<a href="../../download/soundmanagerv296a-20100624.zip">Download archived version</a>)</h3>
-			
+
 				<p>Disabling HTML5 Audio for Safari 5 on Snow Leopard 10.6.3 + 10.6.4 (current release) only, as it is broken similar to Safari 4.x (also on Snow Leopard only.) Related bug: <a href="https://bugs.webkit.org/show_bug.cgi?id=32159#c14">#32519</a>. Also, version info in SWFs and fixed X-domain SWF build.</p>
-			
+
 			    <ul class="double">
-			
+
 			     <li class="in">
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -371,16 +371,16 @@ soundManager.ontimeout(function(){
 
 			   <li class="in">
 			    <h3><b>V2.96a.20100606</b> - RTMP (Flash Media Server) Support, HTML5 Updates (<a href="../../download/soundmanagerv295b-20100606.zip">Download archived version</a>)</h3>
-			
+
 				<p>HTML5 update, new RTMP feature: Experimental Flash Media Server support, <code>onposition()</code> event listener, SMSound <code>type</code> option and code cleanup.</p>
-			
+
 			    <ul class="double">
-			
+
 			     <li class="in">
 			      <p class="compact">API Updates</p>
 			      <ul class="nested compact flat">
 				   <li>New experimental <a href="../#smsound-serverurl" title="SMSound serverURL property">RTMP support</a> via kjvarga's fork at <a href="http://github.com/kjvarga/SoundManager2/">http://github.com/kjvarga/SoundManager2/</a> while maintaining existing NetStream-based behaviour for non-RTMP MPEG4 audio, etc. Uses new <code>serverURL</code> parameter for FMS (I used Red5 for dev/testing,) eg. <code>soundManager.createSound({id:'rtmpTest',serverURL:'rtmp://localhost/oflaDemo',url:'oh-alberta.mp3'}).play();</code></li>
-				   <li>New SMSound option for createSound(), load(), play(): '<a href="../#smsound-type" title="SMSound type option">type</a>', for specifying MIME type alongside URL to help with detecting playability. eg. 
+				   <li>New SMSound option for createSound(), load(), play(): '<a href="../#smsound-type" title="SMSound type option">type</a>', for specifying MIME type alongside URL to help with detecting playability. eg.
 <code>soundManager.createSound({id:'foo', url:'/player.php?stream=1', type:'audio/mp3'}).play();</code> and so on. Hat tip: <a href="http://sylvinus.org">sylvinus.org</a></li>
                    <li>New SMSound event: <a href="../#smsound-onposition" title="SMSound onposition() event">onposition()</a>, for attaching listeners to specific times within a sound.</li>
 				  </ul>
@@ -408,11 +408,11 @@ soundManager.ontimeout(function(){
 
 			   <li class="in">
 			    <h3><b>V2.96a.20100520</b> - HTML5 Edition (<a href="../../download/soundmanagerv295b-20100520.zip">Download archived version</a>)</h3>
-			
+
 				<p>Experimental HTML5 support, lots of code shuffling and performance tweaks.</p>
-			
+
 			    <ul class="double">
-			
+
 			     <li class="in">
 			      <p class="compact">API Updates</p>
 			      <ul class="nested compact flat">
@@ -480,7 +480,7 @@ soundManager.ontimeout(function(){
 				</ul>
 			   </li>
 
-				
+
 			   <li class="in">
 			    <h3><b>V2.95b.20100101</b> (<a href="../../download/soundmanagerv295b-20100101.zip">Download archived version</a>)</h3>
 			    <p>New features: Flash movie debugging in SWF via <code>debugFlash</code> (default:false), <code>SMSound.eqData = { left:[], right:[] }</code>, code tidying and debug output clean-up</p>
@@ -510,7 +510,7 @@ soundManager.ontimeout(function(){
 
 				</ul>
 			   </li>
-				
+
 			   <li class="in">
 			    <h3><b>V2.95a.20090717</b> (<a href="../../download/soundmanagerv295a-20090717.zip">Download archived version</a>)</h3>
 			    <p>New features: onready(), fast polling, flash blocking demos etc.</p>
@@ -545,7 +545,7 @@ soundManager.ontimeout(function(){
 
 			    </ul>
 			   </li>
-				
+
 			   <li class="in">
 			    <h3><b>V2.95a.20090501</b> (<a href="../../download/soundmanagerv295a-20090501.zip">Download archived version</a>)</h3>
 			    <p>Lots of updates.</p>
@@ -562,7 +562,7 @@ soundManager.ontimeout(function(){
 				   <li>New <code>bufferTime</code> property for MovieStream content. Defines seconds of data to buffer before playback begins (null = flash default of 0.1 seconds; if AAC playback is gappy, try up to 3 seconds.)</li>
 			      </ul>
 			     </li>
-			
+
 			     <li>
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -582,7 +582,7 @@ soundManager.ontimeout(function(){
 				   <li>Better code/feature separation and clean-up on inline player, Muxtape-style demos</li>
 				  </ul>
 			     </li>
-			
+
 			   </ul>
 			  </li>
 
@@ -599,7 +599,7 @@ soundManager.ontimeout(function(){
 				   <li>New <code class="in">soundManager.flashLoadTimeout</code> property, milliseconds SM2 will wait for flash movie callback before failing and calling soundManager.onerror() during start-up/init. If set to 0, SM2 will wait indefinitely for flash (good for reboot/flashblock-type scenarios.)</li>
 			      </ul>
 			     </li>
-				
+
 			     <li>
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -618,7 +618,7 @@ soundManager.ontimeout(function(){
 			     </li>
 
 			    </ul>
-			
+
 			   </li>
 
 
@@ -636,7 +636,7 @@ soundManager.ontimeout(function(){
 				   <li>Updated API demo testcases (<a href="../../demo/api/">API Demo page</a>)</li>
 			      </ul>
 			     </li>
-				
+
 			     <li>
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -649,7 +649,7 @@ soundManager.ontimeout(function(){
 			     </li>
 
 			      </ul>
-			
+
 			   </li>
 
 
@@ -665,7 +665,7 @@ soundManager.ontimeout(function(){
 				   <li>Updated design on API demo page, new <a href="../../demo/api/#looping">looping example</a></li>
 			      </ul>
 			     </li>
-				
+
 			     <li>
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -678,10 +678,10 @@ soundManager.ontimeout(function(){
 			     </li>
 
 			      </ul>
-			
+
 			   </li>
 
-				
+
 			   <li class="in">
 			    <h3><b>V2.91a.20081205</b> (<a href="../../download/soundmanagerv291a-20081205.zip">Download archived version</a>)</h3>
 
@@ -694,7 +694,7 @@ soundManager.ontimeout(function(){
 				   <li>Code verified with <a href="http://jslint.com">jslint</a>. 0 errors reported with default settings, Edition 2008-11-26</li>
 				  </ul>
 				 </li>
-				
+
 				 <li>
 				  <p class="compact">Bug fixes</p>
 				  <ul class="nested compact flat">
@@ -705,7 +705,7 @@ soundManager.ontimeout(function(){
 			      </ul>
 			     </li>
 			    </ul>
-			
+
 			   </li>
 
 			   <li class="in">
@@ -1070,19 +1070,19 @@ soundManager.ontimeout(function(){
 			   </li>
 
 			  </ul>
-			  
+
 				<!-- <script type="text/javascript">document.getElementById('revision-list').className += ' hide-old';</script> -->
 
 			  </div>
-				
+
 			</div>
-			
+
 		</div>
 
-	
+
 	<div id="col3" class="c3">
 
- 
+
   <div id="get-satisfaction" class="box">
    <div id="gsfn_list_widget">
     <h2><a href="http://getsatisfaction.com/schillmania/products/schillmania_soundmanager_2/" title="User discussion, FAQs and support for SoundManager 2" rel="nofollow">Discussion / Support</a><span class="l"></span><span class="r"></span></h2>
@@ -1128,7 +1128,7 @@ soundManager.ontimeout(function(){
 
 
 	</div>
-	
+
 	<div class="clear"></div>
 
  <!-- /main -->
@@ -1140,7 +1140,7 @@ soundManager.ontimeout(function(){
 <script type="text/javascript">
 init();
 </script>
-	
+
 </body>
 
 </html>

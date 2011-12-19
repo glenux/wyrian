@@ -15,14 +15,14 @@ Layouts.Player = new Layout({
 			y: Game.height-220
 		},
 		fireInterval: 300,
-		explode: function(obj) {	
+		explode: function(obj) {
 			if ( ! obj ) return false ;
 			obj.explosing = true ;
 			Layouts.Ennemies.createExplosion(obj) ;
 			Layouts.Player.running = false ;
 		},
-		animate: function(obj) { 
-		
+		animate: function(obj) {
+
 			// -- KEY up /down
 			if ( Game.input.keyboard.up ) {
 				if ( obj.y > 0 ) obj.y -= obj.parent.settings.speed ;
@@ -30,15 +30,15 @@ Layouts.Player = new Layout({
 			if ( Game.input.keyboard.down && (obj.y < (Game.height-obj.height) ) ) {
 				obj.y += obj.parent.settings.speed;
 			}
-			
+
 			// -- Left/Right move : choose sprite sequence to display
 			if ( Game.input.keyboard.left && (obj.x > 0)) {
 				obj.x -= obj.parent.settings.speed;
-			} 
+			}
 			if ( Game.input.keyboard.right && (obj.x < Game.width-obj.width) ) {
 				obj.x += obj.parent.settings.speed;
-			} 
-			
+			}
+
 			// -- Press Space : fire
 			if ( Game.input.keyboard.space ) {
 				obj.parent.fire(obj) ;
@@ -46,7 +46,7 @@ Layouts.Player = new Layout({
 
 		}
 	}, {
-		
+
 		id: 'ship_reactor',
 		width: 44,
 		height: 68,
@@ -60,21 +60,21 @@ Layouts.Player = new Layout({
 				obj.settings.sprites = [2,3,4] ;
 			}
 		}
-		
+
 	}],
-	
+
 	// -- Define current Speed
 	speed: 20,
 	direction: 1,
-	
+
 	// -- Define canvas parent
 	dom: $('div#game')
-	
+
 }) ;
 
 // -- Bullets types
 Layouts.Player.bulletLib = function(obj, bulletType) {
-	
+
 	var bulletConf = {
 		power: 40,
 		imageSrc: 'images/bullet-electric-sprite.png',
@@ -83,15 +83,15 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		direction: -1,
 		type: 'human',
 		name: 'bullet',
-		explode: function(obj) {	
+		explode: function(obj) {
 			if ( ! obj ) return false ;
 			obj.explosing = true ;
 	  		obj.deleteAfter = true ;
 		},
 		origin: {x:0, y:0}
 	} ;
-	
-	// -- Default Left 
+
+	// -- Default Left
 	if ( bulletType == 'weapon_pilot' )  {
 		bulletConf.width = 16 ;
 		bulletConf.height = 64 ;
@@ -100,7 +100,7 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		bulletConf.origin.x = obj.x-6+obj.width/2 ;
 		bulletConf.origin.y = obj.y - bulletConf.height ;
 	}
-	
+
 	// -- Big Left
 	if ( bulletType == 'big_left' )  {
 		bulletConf.width = 60 ;
@@ -109,7 +109,7 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		bulletConf.origin.x = obj.x+18+obj.width/2 ;
 		bulletConf.origin.y = obj.y + 50 - bulletConf.height ;
 	}
-	
+
 	// -- Big Left
 	if ( bulletType == 'big_right' )  {
 		bulletConf.width = 60 ;
@@ -118,12 +118,12 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 		bulletConf.origin.x = obj.x-75+obj.width/2 ;
 		bulletConf.origin.y = obj.y + 50 - bulletConf.height ;
 	}
-	
+
 	// -- The animate function
 	bulletConf.animate = function(obj) {
 	  	if ( obj.deleteAfter ) return false;
 	  	if ( obj.explosing ) {
-	  	
+
 	  		Game.log(obj) ;
 	  		return false ;
 	  	}
@@ -132,25 +132,25 @@ Layouts.Player.bulletLib = function(obj, bulletType) {
 	    	obj.deleteObj() ;
 	    }
 	} ;
-	
+
 	// Add the bullet to display
 	return this.createObj(bulletConf) ;
-	
+
 } ;
 
 // -- Fire bullets on space bar
 Layouts.Player.fire = function(obj) {
-	
+
 	// Get now time and lastfired
 	this.now = (new Date().getTime()) ;
 	this.lastFired = this.lastFired || this.now ;
-	
+
 	// If firing, wait for next interval
 	if ( (this.now-this.lastFired) < (obj.settings.fireInterval) ) return false;
-	
+
 	// Store now for last fired event
 	this.lastFired = this.now ;
-	
+
 	// Create new bullets
 	var bullets = [] ;
 	bullets.push(this.bulletLib(obj, 'weapon_pilot')) ;
@@ -159,7 +159,7 @@ Layouts.Player.fire = function(obj) {
 	for ( var i in bullets ) {
 		this.els.push(bullets[i]) ;
 	}
-	
+
 	// Play sound
 	soundManager.play('shoot') ;
 }
