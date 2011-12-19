@@ -2,28 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:og="http://opengraphprotocol.org/schema/"
       xmlns:fb="http://www.facebook.com/2008/fbml">
-<head> 
-	
+<head>
+
 	<!-- Google Chrome Frame Compatibility -->
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 	<!-- SEO Friendly -->
 	<title>Wyrian - A clone Game of Tyrian in HTML5</title>
-	<meta name="description" content="Wyrian : An awesome clone Game of Tyrian. Developed during the HTML5 Game Jam 2011 at Paris by Guillaume DE LA RUE." /> 
-	
+	<meta name="description" content="Wyrian : An awesome clone Game of Tyrian. Developed during the HTML5 Game Jam 2011 at Paris by Guillaume DE LA RUE." />
+
 	<!-- Facebook Meta Tags -->
 	<meta property="og:type" content="game" />
 	<meta property="og:title" content="Wyrian - An awesome clone Game of Tyrian in HTML5" />
 	<meta property="og:site_name" content="Wyrian" />
 	<meta property="og:image" content="http://www.html5place.com/lab/wyrian/images/Wyrian-screenshot.png" />
-	<meta property="og:url" content="http://www.html5place.com/lab/wyrian/" /> 
+	<meta property="og:url" content="http://www.html5place.com/lab/wyrian/" />
 	<meta property="og:description" content="Wyrian : An awesome clone Game of Tyrian. Developed during the HTML5 Game Jam 2011 at Paris."/>
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" media="all" href="css/style.css" />
 	<link  href="http://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet" type="text/css" >
-</head> 
+</head>
 <body>
 
 	<!-- Game Intro -->
@@ -31,7 +31,7 @@
 		<div class="text orbitron">Wyrian</div>
 		<div id="start-game" class="orbitron">Play</div>
 	</div>
-	
+
 	<!-- Game Over -->
 	<div id="game-over">
 		<div class="text orbitron">GAME OVER</div>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Scene -->
 	<div class="container" id="GameContainer">
 		<div id="background" class="layout"></div>
@@ -68,40 +68,40 @@
 			<div class="orbitron" id="fpsCounter">FPS : <span>0</span></div>
 		</div>
 	</div>
-	
+
 	<div id="soundManager" class=""></div>
-	
+
 	<!-- The footer... -->
 	<footer id="credits" class="">
 		<strong>HTML5 Game Jam 2011</strong><br>
 		<strong><a href="https://github.com/glenux/wyrian" target="_blank" title="View Project on GitHub" class="game">..:: Wyrian v<span id="version">0.2e</span> ::..</a></strong> | <a href="http://www.html5place.com/" title="View my Website" class="author">Guillaume DE LA RUE</a><br>Thanks to <a href="https://github.com/glenux" target="_blank" title="View profile of Glenux on GitHub" class="quote">Glenux</a> for design and Matthieu Bosquet<br>And everyone present at the HTML5 Game Jam :)
 	</footer>
-	
+
 	<!-- Main JS Libs -->
 	<script type="text/javascript" src="js/libs/jquery-1.5.js"></script>
 	<script type="text/javascript" src="js/libs/require.js"></script>
-	
+
 	<!-- Sound Library -->
 	<script type="text/javascript" src="js/libs/soundmanager/script/soundmanager2.js"></script>
 	<script type="text/javascript" src="js/sounds.load.js"></script>
-	
+
 	<!-- Game Libs -->
 	<script type="text/javascript" src="js/GameClass.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-	
+
 	<!-- ANalytics Tracking -->
 	<script type="text/javascript">
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-12891268-4']);
 	  _gaq.push(['_trackPageview']);
-	
+
 	  (function() {
 	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
 	</script>
-	
+
 	<!-- 1x1 stat pixel -->
 	<img src="/t/?action=WyrianGame&u=http%3A%2F%2Fwww.html5place.com%2Flab%2Fwyrian%2F" />
 

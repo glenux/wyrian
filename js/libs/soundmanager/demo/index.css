@@ -204,7 +204,7 @@ pre {
 pre span,
 code span,
 dt span {
- color:#339933;	
+ color:#339933;
 }
 
 pre span span,
@@ -742,7 +742,7 @@ ul.standard ul {
 }
 
 .c3 h2 .l.flat,
-.wedge .l.flat, 
+.wedge .l.flat,
 .c3 h2 .r.flat,
 .wedge .r.flat {
  background-image:none;
@@ -810,7 +810,7 @@ ul.standard ul {
  height:1.67em;
  padding:0.25em 0.5em;
  padding:0px;
- 
+
 }
 
 .c3 h4 {

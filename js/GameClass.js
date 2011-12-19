@@ -8,50 +8,50 @@ var Game = null ;
 
 // -- Init scene prototype
 var app = function(opts) {
-	
+
 	this.name = "Wyrian - A Tyrian Arcade Game Clone" ;
 	this.version = '0.2a' ;
-	
+
 	// Init uniqId
 	this.uniqId = 0 ;
-	
+
 	// Default settings
 	var settings = {
 		libs: {}
 	} ;
 	$.extend(true, settings, opts);
 	this.settings = settings ;
-	
+
 	// Set Scene size
 	this.width = $(document).width() ;
 	this.height = $(document).height() ;
-	
+
 	// Listen for inputs
 	this.input = new this.Input() ;
-	 
+
 	// Return object
 	return this;
 } ;
 
 // -- Bind init call
 app.prototype.init = function() {
-	
+
 	var self = this ;
-	
+
 	require({
 	      baseUrl: "js/",
 	      urlArgs: "bust=" + GameVersion
 	    },
-	    
+
 	    // -- Layout to load
 	    self.settings.layers,
-	    
+
 	    // -- All objects are loaded => can run
 	    function() {
 			$(document).trigger('gameLoaded') ;
 		}
-	);	
-	
+	);
+
 	if ( typeof this.settings.init == 'function') {
 		this.settings.init() ;
 	}
@@ -65,8 +65,8 @@ app.prototype.log = function(txt) {
 }
 
 // -- Call all canvas updates if declared as 'running'
-app.prototype.loopAnimation = function() {	
-	
+app.prototype.loopAnimation = function() {
+
 	// -- Search for elements that have to be updated
 	Game.activeElements = 0 ;
 	for ( var i in Layouts ) {
@@ -75,10 +75,10 @@ app.prototype.loopAnimation = function() {
 			_layout.update() ;
 		}
 	}
-	
+
 	// -- Get level
 	Level = Math.floor((Game.score||0)/1000) ;
-	
+
 	// -- Create ennemies if needed
 	var numEnnemies = 0 ;
 	if ( Layouts.Ennemies ) {
@@ -90,10 +90,10 @@ app.prototype.loopAnimation = function() {
 			Layouts.Ennemies.createRandom() ;
 		}
 	}
-	
+
 	// -- Init loops counter
 	Game.loops = Game.loops||0 ;
-	
+
 	// -- Init vars
 	if ( Game.loops == 0 ) {
  		this.frameCount = 0;
@@ -101,7 +101,7 @@ app.prototype.loopAnimation = function() {
  		this.maxfps = 1 / (FPS / 1000);
  		this.lastTime = new Date();
 	}
-	
+
 	// -- Calculate time deltas and find fps value
 	var nowTime = new Date();
     var diffTime = Math.ceil((nowTime.getTime() - this.lastTime.getTime()));
@@ -111,10 +111,10 @@ app.prototype.loopAnimation = function() {
        this.lastTime = nowTime;
     }
     this.frameCount++;
-	
+
 	// -- Increase loop counter
 	Game.loops++ ;
-	
+
 	// -- Refresh Scores and HUD informations
 	$('#score span').html(Game.score) ;
 	$('#activeElements span').html(Game.activeElements) ;
@@ -142,7 +142,7 @@ app.prototype.Input = function() {
         if(e.keyCode==32) {
             that.keyboard['space'] = val;
             e.preventDefault() ;
-            e.stopPropagation() ;            
+            e.stopPropagation() ;
         }
         if(e.keyCode==17)
             that.keyboard['ctrl'] = val;

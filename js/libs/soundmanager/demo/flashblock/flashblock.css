@@ -30,7 +30,7 @@
 #sm2-container.swf_timedout,
 #sm2-container.swf_timedout object,
 #sm2-container.swf_timedout embed {
- /* 
+ /*
   when SM2 didn't start normally, time-out case. flash blocked, missing SWF, no flash?
   48px square flash placeholder is typically used by blockers.
  */
