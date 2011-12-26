@@ -30,7 +30,7 @@
 <script type="text/javascript" src="../script/soundmanager2.js"></script>
 <script type="text/javascript">
 // optional
-soundManager.url = '../swf/'; 
+soundManager.url = '../swf/';
 soundManager.onload = function() {}
 
 </script>
@@ -82,7 +82,7 @@ soundManager.onload = function() {}
 	</li>
      <li>
 	Is your browser URL at file:// or c:/path/ or otherwise not using HTTP? Flash security "whitelisting" is required to allow Flash + JS to work when offline, placing it in the "LocalTrusted" Flash security sandbox rather than "localWithFile".
-	
+
     <div id="d-flashtojs-offline" style="padding-bottom:1em">
      <h4>Offline viewing: Adding a "trusted location" to the Flash Security Settings Panel</h4>
      <p>The Flash Player Global Security Settings Panel is a web-based control panel which allows you to configure Flash security. You will need to add the path of the SoundManager 2 project in order for it to work "offline" (ie., when viewing via file:// or c:/)</p>
@@ -95,7 +95,7 @@ soundManager.onload = function() {}
      </div>
      <p><a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html" target="_blank" class="feature">Launch the Flash Security Settings Panel</a></p>
     </div>
-	
+
 	 </li>
      <li style="margin-top:0.5em">Flash blockers (FlashBlock, "click to flash" etc.) preventing flash load and start-up - need whitelisting/"allow this domain" to work smoothly. If you suspect blocking is the issue, try the <a href="../demo/flashblock/">SoundManager 2 Flashblock demo</a>.</li>
      <li style="margin-top:0.5em">Online viewing (HTTP/S): Same-domain security rules apply to HTML + Flash content by default (crossdomain.xml/allowDomain() in .AS source required to override.)</li>
@@ -120,7 +120,7 @@ soundManager.onload = function() {}
    <div class="details">
     <p>At this point, Javascript attempts to respond to Flash's initial outgoing Flash -&gt; JS call, completing the test for JS/flash communication. If SM2 does not receive a response from flash, it will eventually fail.</p>
     <p>Offline viewing conditions and cross-domain security rules will prevent Flash &lt;-&gt; JS communication. See the details of Flash -&gt; JS for information.</p>
-   </div>   
+   </div>
   </li>
 
   <li id="d-soundtest" class="default">

@@ -5,14 +5,14 @@ Layouts.Ennemies = new Layout({
 	// -- Define elements to draw with options
 	el: [],
 	images: ['images/sprites/alien_1.png?_=1', 'images/sprites/alien_2.png?_=1', 'images/sprites/explosion-sprite.png' ],
-	
+
 	// -- Define current Speed
 	speed: 7,
 	direction: 1,
-	
+
 	// -- Define canvas parent
 	dom: $('div#ground')
-	
+
 }) ;
 
 // -- Restart enemy
@@ -28,7 +28,7 @@ Layouts.Ennemies.reinitObj = function(obj) {
 // -- Create a random ennemy
 Layouts.Ennemies.createRandom = function(opts) {
 	var self = this ;
-	
+
 	var libsAlien = [
 		{
 			width: 80,
@@ -43,10 +43,10 @@ Layouts.Ennemies.createRandom = function(opts) {
 			sprites: [0]
 		}
 	] ;
-	
+
 	// Choose one in the lib
 	var alien = libsAlien[Math.floor(Math.random()*libsAlien.length)] ;
-	
+
 	// Construct global properties
 	alien.name = 'ennemy' ;
 	alien.type = 'alien' ;
@@ -60,7 +60,7 @@ Layouts.Ennemies.createRandom = function(opts) {
     	obj.explosing = true ;
     	obj.box.hide(0);
     	obj = self.reinitObj(obj);
-    	
+
     	Game.score = Game.score || 0 ;
     	Game.score += obj.settings.power ;
     } ;
@@ -84,8 +84,8 @@ Layouts.Ennemies.createExplosion = function(object) {
 
 	var self = this ;
 	var explosion = {
-		name: 'explosion', 
-		type: 'neutral', 
+		name: 'explosion',
+		type: 'neutral',
 		width:330,
 		height:330,
 		imageSrc: self.settings.images[2],
@@ -95,19 +95,19 @@ Layouts.Ennemies.createExplosion = function(object) {
 			obj.settings.spriteMod = 5 ;
 		}
 	}
-	
+
 	var newObj = this.createObj(explosion) ;
 	self.els.push(newObj) ;
-	
+
 	if ( timers.playSoundExplode ) clearTimeout(timers.playSoundExplode) ;
 	timers.playSoundExplode = setTimeout(function() {
 		soundManager.play('explode') ;
 	}, 1000/FPS) ;
-	
+
 	setTimeout(function() {
 		newObj.deleteObj() ;
-		if ( ! Layouts.Player.running ) 
+		if ( ! Layouts.Player.running )
 			$(document).trigger('gameComplete') ;
 	}, 500) ;
-	
+
 } ;
